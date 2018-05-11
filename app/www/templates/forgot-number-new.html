@@ -1,0 +1,35 @@
+<ion-view hide-nav-bar="true" class="login-content bg-photo content">
+  <ion-content overflow-scroll="true">
+    <div class="bottom-block-fixer">
+      <div class="row logo-row">
+        <div class="center col">
+          <div class="logo-conatiner">
+            <img src="assets/icon/logo.svg"/>
+          </div>
+        </div>
+      </div>
+      <div class="login-box">
+        <form name="form" novalidate>
+          <div class="bottom-block">
+            <div class=" row row-bottom-input">
+              <div class="col">
+                <div class="list form-list">
+                    <label class="item item-input">
+                      <i class="icon-phone item-input_icon"></i>
+                      <input class="text-input" type="tel" placeholder="Номер телефона" name="tel" ng-model="phone" required></input>
+                    </label>
+                </div>
+              </div>
+            </div>
+            <div class="signup-col">
+              <button class="submit-btn button button-has-loader" full ng-click="getCode()" ng-disabled="form.$invalid" >
+                Получить код
+                <div ng-show="loading" class="loader button-has-loader_loader"></div>
+              </button>
+            </ion-col>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

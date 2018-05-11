@@ -1,0 +1,46 @@
+<ion-vew  title="Мой кабинет" class="has-header">
+  <ion-content class="has-header">
+    <div class="profile-header">
+      <div class="profile-header_avatar">
+        <img ng-src="{{user.avatar}}">
+      </div>
+      <p class="profile-header_hi">Здравствуйте!</p>
+      <p class="profile-header_name">{{user.name}} {{user.surname}}</p>
+    </div>
+    <div class="balance-item">
+      {{infoname}}:
+    </div>
+    <div class="info-block item">
+      <div class="user-info">
+        <p class="user-info-type">
+          <input class="user-info-item" ng-model="newItem.value" placeholder="Добавить новое">
+        </p>
+      </div>
+      <button class="add-user-info add-user-info-small"  ng-click="addNewItem()">
+        <i class="icon-plus-big"></i>
+      </button>
+    </div>
+    <div ng-repeat="item in info track by $index" class="info-block item">
+      <div class="user-info">
+        <p class="user-info-type">
+          <span class="user-info-item">
+          {{item}}
+          </span>
+        </p>
+      </div>
+      <button class="add-user-info add-user-info-small" ng-click="removeItem($index)">
+        <i class="icon-minus-big"></i>
+      </button>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer counters-footer">
+    <div class="footer-buttons">
+      <button class="button-bottom" type="button" ng-click="goBack()">
+        <span>Сохранить</span>
+      </button>
+      <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+        <i class="icon-td-back"></i>
+      </button>
+    </div>
+  </div>
+</ion-vew>

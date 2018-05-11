@@ -1,0 +1,40 @@
+<ion-view title="Service: Подъезд {{user.address.ladder}}">
+  <ion-content class="has-header has-footer">
+    <div class="dated-photo">
+      <img ng-src="{{service.before.photo}}">
+      <time class="dated-photo_time"> <div class="servie-number pull-right">{{service.before.date}}</div> До исправления</time>
+    </div>
+    <div class="master-article" ng-click="unwrapArticle=!unwrapArticle">
+      <div class="master-header">
+        <img class="master-header_photo" ng-src="{{service.master.photo}}">
+        <div class="master-header_text">{{service.master.header}}</div>
+      </div>
+      <div class="master-article_content" ng-class="{'full':unwrapArticle}">
+        {{service.master.text}}
+      </div>
+      <footer class="footer">
+        <div class="footer-blur">
+        </div>
+        <button ng-show="!unwrapArticle" class="show-all">
+          <i class="icon-arrow-up icon-arrow-white-right"></i>
+        </button>
+        <button ng-show="unwrapArticle" class="show-all">
+          <i class="icon-arrow-up"></i>
+        </button>
+      </footer>
+    </div>
+    <div class="dated-photo">
+      <img ng-src="{{service.after.photo}}">
+      <time class="dated-photo_time"> <div class="servie-number pull-right">{{service.after.date}}</div> После исправления</time>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer counters-footer">
+        <button class="button-circle pull-left" type="button" ng-click="goBack()">
+          <i class="icon-arrow icon-arrow-back"></i>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-view>

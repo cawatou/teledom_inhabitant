@@ -1,0 +1,157 @@
+<ion-view title="Мой кабинет">
+  <ion-content class="has-header has-footer">
+	<div class="title">
+		<a class="prev" ui-sref="main.dash"></a> Профиль
+	</div>
+	<div class="title2">ИНФОРМАЦИЯ ПРОФИЛЯ</div>
+	<!--
+    <div class="profile-header">
+      <div class="profile-header_avatar">
+        <img ng-src="{{user.avatar}}">
+      </div>
+      <p class="profile-header_hi">Здравствуйте!</p>
+      <p class="profile-header_name"> {{user.first_name}} {{user.second_name}} </p>
+    </div>
+	-->
+	  <!--
+    <div class="balance-item">
+      ваш баланс: {{user.balance}} ₽
+    </div>
+	-->
+	<div class="i">
+		<div class="item" onclick="active(this)">
+			<div>{{user.first_name}} {{user.second_name}}</div>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.08 16"><path style="fill:#3b8ec5;" d="M10,2.67l3.27,3.27L5,14.22,1.72,10.95Zm5.75-.79L14.29.42a1.45,1.45,0,0,0-2,0l-1.4,1.4,3.27,3.27,1.63-1.63A1.12,1.12,0,0,0,15.75,1.88ZM0,15.55A.37.37,0,0,0,.46,16l3.64-.88L.84,11.83Z" transform="translate(0 0)"/></svg>
+			<div class="popup" id="pop1">
+				<div class="w">
+					<input type="text" value="Константинопольский Константин Константинович">
+					<div class="buttons">
+						<div class="btn no">ОТМЕНА</div>
+						<div class="btn yes">СОХРАНИТЬ</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="item" ng-repeat="contact in user.contacts"  ng-click="toggleVisibility(contact)" onclick="active(this)">
+			<div>{{contact.value}}</div>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.08 16"><path style="fill:#3b8ec5;" d="M10,2.67l3.27,3.27L5,14.22,1.72,10.95Zm5.75-.79L14.29.42a1.45,1.45,0,0,0-2,0l-1.4,1.4,3.27,3.27,1.63-1.63A1.12,1.12,0,0,0,15.75,1.88ZM0,15.55A.37.37,0,0,0,.46,16l3.64-.88L.84,11.83Z" transform="translate(0 0)"/></svg>
+			<div class="popup">
+				<div class="w">
+					<input type="text" placeholder="{{contact.value}}">
+					<div class="buttons">
+						<div class="btn no">ОТМЕНА</div>
+						<div class="btn yes">СОХРАНИТЬ</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="item" onclick="active(this)">
+			<div>+7 (951) 666 66 66</div>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.08 16"><path style="fill:#3b8ec5;" d="M10,2.67l3.27,3.27L5,14.22,1.72,10.95Zm5.75-.79L14.29.42a1.45,1.45,0,0,0-2,0l-1.4,1.4,3.27,3.27,1.63-1.63A1.12,1.12,0,0,0,15.75,1.88ZM0,15.55A.37.37,0,0,0,.46,16l3.64-.88L.84,11.83Z" transform="translate(0 0)"/></svg>
+			<div class="popup">
+				<div class="w">
+					<input type="text" value="+7 (951) 666 66 66">
+					<div class="buttons">
+						<div class="btn no">ОТМЕНА</div>
+						<div class="btn yes">СОХРАНИТЬ</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="title2">
+		НАСТРОЙКИ ПРОФИЛЯ
+	</div>
+	<div class="s">
+		<div class="item" ng-repeat="service in user.services">
+			<div>Настройка 1</div>
+			<div class="toggle">
+				<input type="checkbox" id="toggle1">
+				<label for="toggle1">
+					<div class="slide"></div>
+				</label>
+			</div>
+		</div>
+		<div class="item">
+			<div>Настройка 2</div>
+			<div class="toggle">
+				<input type="checkbox" id="toggle2">
+				<label for="toggle2">
+					<div class="slide"></div>
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="title2" onclick="active(this)">
+		ИЗМЕНИТЬ ПАРОЛЬ
+		<div class="popup">
+			<div class="w">
+				<div class="title2">Изменить пароль</div>
+				<input type="text" placeholder="Старый пароль">
+				<input type="text" placeholder="Новый пароль">
+				<input type="text" placeholder="Подтверждение нового пароля">
+				<div class="buttons">
+					<div class="btn no">ОТМЕНА</div>
+					<div class="btn yes">СОХРАНИТЬ</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  </ion-content>
+	<!--
+    <ul class="contacts">
+      <li ng-repeat="contact in user.contacts" class="contact item item-contact">
+        <i class="icon-{{contact.type}} pull-left contact-icon"></i>
+        {{contact.value}}
+        <button class="toggle-visibility pull-right" ng-click="toggleVisibility(contact)">
+          <i ng-show="contact.visible" class="icon-visible"></i>
+          <i ng-show="!contact.visible" class="icon-hidden"></i>
+        </button>
+      </li>
+    </ul>
+    <div class="info-block item">
+      <div class="user-info">
+        <p class="user-info-type">Профессионал в:</p>
+        <span class="user-info-item" ng-repeat="proff in user.professions">
+          {{proff}}
+        </span>
+      </div>
+      <button class="add-user-info" ui-sref="main.profile.editinfo({info:user.professions,infoname:'Вы профессионал в'})">
+        <i class="icon-plus-big"></i>
+      </button>
+    </div>
+    <div class="info-block item">
+      <div class="user-info">
+        <p class="user-info-type">Интересы:</p>
+        <span class="user-info-item" ng-repeat="intrest in user.intrests">
+          {{intrest}}
+        </span>
+      </div>
+      <button class="add-user-info" ui-sref="main.profile.editinfo({info:user.intrests,infoname:'Ваши интересы'})">
+        <i class="icon-plus-big"></i>
+      </button>
+    </div>
+    <div class="info-block item">
+      <div class="user-info">
+        <p class="user-info-type">Активные услуги:</p>
+        <div class="service-icon" ng-repeat="service in user.services">
+          <i class="icon-{{service}}-package"></i>
+        </div>
+      </div>
+      <button class="add-user-info"  ui-sref="main.profile.pacgajes">
+        <i class="icon-plus-big"></i>
+      </button>
+    </div>
+  <div class="bar bar-footer counters-footer">
+    <div class="footer-buttons">
+      <button class="button-bottom" type="button" ng-click="goBack()">
+        <span>Сохранить</span>
+      </button>
+      <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+        <i class="icon-td-back"></i>
+      </button>
+    </div>
+  </div>
+-->
+</ion-view>

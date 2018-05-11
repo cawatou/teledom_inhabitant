@@ -1,0 +1,67 @@
+<ion-view title="Мой кабинет">
+  <ion-content class="has-header has-footer">
+    <div class="profile-header">
+      <div class="profile-header_avatar">
+        <img ng-src="{{user.avatar}}">
+      </div>
+      <p class="profile-header_hi">Здравствуйте!</p>
+      <p class="profile-header_name"> {{user.name}} {{user.surname}} </p>
+    </div>
+    <div class="balance-item">
+      ваш баланс: {{user.balance}} ₽
+    </div>
+    <ul class="contacts">
+      <li ng-repeat="contact in user.contacts" class="contact item item-contact">
+        <i class="icon-{{contact.type}} pull-left contact-icon"></i>
+        {{contact.value}}
+        <button class="toggle-visibility pull-right" ng-click="toggleVisibility(contact)">
+          <i ng-show="contact.visible" class="icon-visible"></i>
+          <i ng-show="!contact.visible" class="icon-hidden"></i>
+        </button>
+      </li>
+    </ul>
+    <div class="info-block item">
+      <div class="user-info">
+        <p class="user-info-type">Профессионал в:</p>
+        <span class="user-info-item" ng-repeat="proff in user.professions">
+          {{proff}}
+        </span>
+      </div>
+      <button class="add-user-info" ui-sref="main.profile.editinfo({info:user.professions,infoname:'Вы профессионал в'})">
+        <i class="icon-plus-big"></i>
+      </button>
+    </div>
+    <div class="info-block item">
+      <div class="user-info">
+        <p class="user-info-type">Интересы:</p>
+        <span class="user-info-item" ng-repeat="intrest in user.intrests">
+          {{intrest}}
+        </span>
+      </div>
+      <button class="add-user-info" ui-sref="main.profile.editinfo({info:user.intrests,infoname:'Ваши интересы'})">
+        <i class="icon-plus-big"></i>
+      </button>
+    </div>
+    <div class="info-block item">
+      <div class="user-info">
+        <p class="user-info-type">Активные услуги:</p>
+        <div class="service-icon" ng-repeat="service in user.services">
+          <i class="icon-{{service}}-package"></i>
+        </div>
+      </div>
+      <button class="add-user-info"  ui-sref="main.profile.pacgajes">
+        <i class="icon-plus-big"></i>
+      </button>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer counters-footer">
+    <div class="footer-buttons">
+      <button class="button-bottom" type="button" ng-click="goBack()">
+        <span>Сохранить</span>
+      </button>
+      <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+        <i class="icon-td-back"></i>
+      </button>
+    </div>
+  </div>
+</ion-view>

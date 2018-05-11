@@ -1,0 +1,40 @@
+<ion-view title="Средства оплаты">
+  <ion-content>
+    <div class="subheader">
+      <span class="subheader_text" ng-show="id">Внесите изменения<br/>
+в текущую карту</span>
+      <span class="subheader_text" ng-show="!id">Добавить карту</span>
+    </div>
+    <form class="card-form  clearfix" novalidate>
+      <div class="card-types">
+        <img class="card-types_icon" src="assets/icon/visa.png">
+        <img class="card-types_icon" src="assets/icon/mastercard.png">
+        <img class="card-types_icon" src="assets/icon/amex.png">
+        <img class="card-types_icon" src="assets/icon/discover.png">
+        <img class="card-types_icon" src="assets/icon/paypal.png">
+      </div>
+      <input  class="card-form_input" ng-model="card.name"  placeholder="Имя на карте" ng-required="true"/>
+      <input  class="card-form_input" ng-model="card.number" cc-format cc-number placeholder="1234 5678 9101 1112" ng-required="true"/>
+      <div cc-exp class="month-year-input">
+        <input class="month-year-input_input" cc-exp-month ng-model="card.month"  placeholder="12"/>
+        /
+        <input class="month-year-input_input" cc-exp-year ng-model="card.year"  placeholder="12"/>
+      </div>
+      <input class="card-form_input card-form_input-cvv" ng-model="card.cvv" cc-cvc placeholder="111"/>
+    </form>
+  </ion-content>
+  <div class="bar bar-footer counters-footer">
+    <div class="footer-buttons">
+        <button class="button-bottom" type="button" ng-click="goBack()">
+            <span ng-show="id">Сохранить</span>
+            <span ng-show="!id">Добавить карту</span>
+        </button>
+        <button class="button-circle pull-left" type="button" ng-click="goBack()">
+          <i class="icon-arrow icon-arrow-back"></i>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-view>

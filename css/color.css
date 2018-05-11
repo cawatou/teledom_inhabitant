@@ -1,0 +1,59 @@
+
+.feature-info h3,
+.feature span i,
+.rb-heading h2,
+.blog:hover a,
+.date a,
+.date i,
+.que-details h3,
+.questions-list span,
+.client-info h4,
+.con-icon span i,
+.contact-info h3,
+.social-links li i,
+.price-info strong,
+.price-section h3,
+.deal-links > ul li i,
+.rb-button:hover,
+.blog:hover .blog-info > a,
+.blog:hover .date,
+.loadmore a,
+.rb-button i,
+.icon-style i
+ {
+    color: #4f229b;
+}
+.contact-form button,
+.feature:hover i,
+.bottom-footer,
+.blog:hover a.details,
+.feature span i:hover,
+.question:hover span::before,
+.rb-button:hover i,
+.social-links li i:hover,
+.rb-button,
+.bx-wrapper .bx-pager.bx-default-pager a:hover,
+.bx-wrapper .bx-pager.bx-default-pager a.active,
+header.sticky,
+nav > ul ul,
+.clients-feedback .owl-dot.active,
+.loadmore span
+
+{
+	background-color: #4f229b;
+}
+.blog:hover .blog-info::before,
+.feature span i,
+.feature > span::after,
+.question > span::after,
+.rb-button
+ {
+	border-color: #4f229b;
+}
+
+
+
+.blog-info a.details,
+.rb-heading p {
+	color: #666666;
+}

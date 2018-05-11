@@ -1,0 +1,94 @@
+<ion-view title="Service: Подъезд {{user.address.ladder}}">
+  <div class="home-content-bg"></div>
+  <ion-content>
+	<div class="title">
+		<a class="prev" ui-sref="main.dash"></a> Заявки
+	</div>
+	<div class="i">
+		<div class="item add" ui-sref="main.services.add">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path style="fill:#3b8dc3;" d="M6,0V6H0V8H6v6H8V8h6V6H8V0Z" transform="translate(0 0)"/></svg>
+			<div>Оставить заявку</div>
+		</div>
+	</div>
+	<div class="r">
+		<div class="item">
+			<input type="radio" id="toggle3">
+			<label for="toggle1">Сегодня</label>
+		</div>
+		<div class="item">
+			<input type="radio" id="toggle4">
+			<label for="toggle4">Неделя</label>
+		</div>
+		<div class="item">
+			<div class="calendar"></div>
+		</div>
+	</div>
+	<div class="a">
+		<div class="item" ng-repeat="service in servicesList"  ng-click="goTo(service)">
+			<div class="w">
+				<div class="data">
+					{{service.date}} {{service.time}}
+				</div>
+				<div class="status type" ng-repeat="type in service.types">
+					<i class="icon-{{type}}"></i>
+				</div>
+				<div class="more"></div>
+			</div>
+			<div class="t">{{service.header}}</div>
+		</div>
+	</div>
+
+  </ion-content>
+</ion-vew>
+
+<!--
+<div class="articel-preview" ng-repeat="service in servicesList"  ng-click="goTo(service)">
+      <div class="bg">
+      </div>
+      <div class="articel-preview_content">
+        <div class="row padding-vertical-17">
+          <div class="col  no-vertical-padding">
+            <time class="date">{{service.date}} {{service.time}}</time>
+        </div>
+      </div>
+        <div class="row padding-vertical-17">
+          <div class="col no-vertical-padding clearfix">
+            <div ng-repeat="type in service.types" class="type">
+              <i class="icon-{{type}}"></i>
+            </div>
+            <h3 class="header">
+              {{service.header}}
+            </h3>
+          </div>
+        </div>
+        <div  class="row padding-vertical-17 message">
+          <div class="col">
+            {{service.message}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col show-all-row">
+            <i class="icon-arrow-down">
+            </i>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="footer-blur">
+        </div>
+        <button class="show-all">
+          <i class="icon-arrow-down-white"></i>
+        </button>
+      </footer>
+    </div>
+  <div class="bar bar-footer counters-footer" ng-class="{'counters-footer-has-message':canPay}">
+    <div class="footer-buttons">
+      <button class="button-circle pull-left" type="button" ui-sref="main.services.add">
+        <i class="icon-plus-menu"></i>
+      </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+-->

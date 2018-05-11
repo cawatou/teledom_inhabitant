@@ -1,0 +1,24 @@
+<ion-view title="Видеонаблюдение">
+  <ion-content class="has-header has-footer video-content">
+    <div class="video-containter" ng-repeat="video in videos track by $index">
+      <h3 ng-show="!video.playing" class="video-header">{{video.name}}</h3>
+      <div class="video" ng-class="{'playing':video.playing}" ng-click="stopVideo($index)">
+        <video id="video-{{$index}}" src="assets/videos/video.mp4" loop>
+        </video>
+      </div>
+      <button ng-show="!video.playing" ng-click="playVideo($index)" class="video-button">
+        <i class="icon-play"></i>
+      </button>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer counters-footer">
+    <div class="footer-buttons">
+        <button class="button-circle pull-left" type="button" ng-click="goBack()">
+          <i class="icon-arrow icon-arrow-back"></i>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-view>

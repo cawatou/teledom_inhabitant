@@ -1,0 +1,41 @@
+<ion-view  title="{{user.address.street + ' ' + user.address.number  + user.address.litera  + ' кв. ' + user.address.flat}}" class="has-header">
+  <date-picker-tabs class="has-header date-tabs" startMonth='startMonth' click-callback='setMonth(month)'></date-picker-tabs>
+  <ion-content class="has-header has-subheader has-footer">
+    <table class="counter-table">
+      <tbody ng-repeat="counter in counters">
+        <tr class="counter-view" ng-if="counter.types" ng-repeat="countertype in counter.types">
+          <td class="counter-view_item counter-view_name" ui-sref="main.counters.edit({counter:counter})" >{{countertype.name}}</a></td>
+          <td class="counter-view_item counter-view_unit" ng-if=" countertype.delta && counter.rooms.length">{{countertype.delta}} {{counter.unit}}</td>
+          <td class="counter-view_item counter-view_price" ng-if="countertype.delta && counter.rooms.length">{{getPrice(countertype)}}₽</td>
+          <td class="counter-view_button counter-view_add-room" colspan="2" ng-if="!countertype.delta">
+            <button class="add_counter_button" ui-sref="main.counters.edit({counter:counter})"><i class="icon-plus-big"></i></button>
+          </td>
+        </tr>
+        <tr class="counter-view" ng-if="!counter.types">
+          <td class="counter-view_item counter-view_name" ng-if="(counter.type=='counter' || counter.type=='water')"><a class="no-style-link" ui-sref="main.counters.edit({counter:counter})" >{{counter.name}}</a></td>
+          <td class="counter-view_item counter-view_name" ng-if="counter.type=='singlePay'">{{counter.name}}</td>
+          <td class="counter-view_item counter-view_unit" ng-if="(counter.type=='counter' || counter.type=='water')&& counter.delta && counter.rooms.length">{{counter.delta}} {{counter.unit}}</td>
+          <td class="counter-view_item counter-view_unit" ng-if="counter.type=='singlePay'">Ежемесячно</td>
+          <td class="counter-view_item counter-view_price" ng-if="(counter.type=='counter' || counter.type=='water')&& counter.delta && counter.rooms.length">{{getPrice(counter)}}₽</td>
+          <td class="counter-view_item counter-view_price" ng-if="counter.type=='singlePay'">{{counter.price}}₽</td>
+          <td class="counter-view_button counter-view_add-room" colspan="2" ng-if="counter.type!='singlePay' && !counter.delta">
+            <button class="add_counter_button" ui-sref="main.counters.edit({counter:counter})"><i class="icon-plus-big"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ion-content>
+  <div class="bar bar-footer counters-footer" ng-class="{'counters-footer-has-message':canPay}">
+    <div class="footer-buttons">
+        <button class="button-bottom" type="button" ng-click="goBack()">
+          <span ng-show="canPay">Оплатить {{bill}} ₽</span>
+        </button>
+        <button class="button-circle pull-left" type="button" ng-click="goBack()">
+          <i class="icon-arrow icon-arrow-back"></i>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-vew>
