@@ -1,0 +1,35 @@
+<ion-vew title="Средства оплаты">
+  <ion-content class="has-header has-footer">
+    <div class="subheader">
+      <span class="subheader_text">Ваши карточки</span>
+    </div>
+    <div class="info-block item info-block-card" ui-sref="main.balance.card({card:card})" ng-repeat="card in cards">
+      <i class="icon-card info-block-card_card-icon"></i>
+      <span class="info-block-card_number">
+        {{card.start}} **** **** {{card.end}}
+      </span>
+      <i class="icon-arrow-right-black info-block-card_open-icon"></i>
+    </div>
+    <div class="info-block item info-block-add-card">
+      <span class="info-block-card_number">
+        Добавить карту
+      </span>
+      <button class="add-user-info" ui-sref="main.balance.add({id:card.id})">
+        <i class="icon-plus-big"></i>
+      </button>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer counters-footer counters-footer-has-message">
+    <div class="footer-buttons">
+        <button class="button-bottom" type="button" ui-sref="main.balance.pay">
+          <span>Внести деньги на счет</span>
+        </button>
+        <button class="button-circle pull-left" type="button" ng-click="goBack()">
+          <i class="icon-arrow icon-arrow-back"></i>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-vew>

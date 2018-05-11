@@ -1,43 +1,56 @@
 <ion-vew title="Настрйока Air-Key">
-  <ion-content class="has-header has-footer">
-    <div class="row">
-      <div class="col">
-        <div class="checbox">
-          <input id="car" class="checbox_input" type="checkbox" ng-model="airkey.car"/>
-          <label class="checbox_lablel label-has-icon" for="car">
-            <i class="icon-checkbox-checked label-has-icon_icon" ng-show="airkey.car"></i>
-            <i class="icon-checkbox label-has-icon_icon" ng-show="!airkey.car"></i>
-            Пропускать машину
-          </lable>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="checbox">
-          <input id="door" class="checbox_input" type="checkbox" ng-model="airkey.door"/>
-          <label class="checbox_lablel label-has-icon" for="door">
-            <i class="icon-checkbox-checked label-has-icon_icon" ng-show="airkey.door"></i>
-            <i class="icon-checkbox label-has-icon_icon" ng-show="!airkey.door"></i>
-            Открывать дверь
-          </lable>
-        </div>
-      </div>
-    </div>
-    <div class="article-form_photo article-button-input">
-      <button class="article-button-input_button full-size-white-button full-size-white-button-no-icon" ng-click="addBackground()">
-        Открыть дверь
-      </button>
-    </div>
-  </ion-content>
-  <div class="bar bar-footer counters-footer">
-    <div class="footer-buttons">
-        <button class="button-bottom" ng-click="goBack()">
+	<ion-content class="has-header has-footer p">
+		<div class="popup pop-page">
+			<div class="w">
+				<div class="title">
+					<a class="prev" ng-click="goBack()"></a> 
+					Настройки ключа
+				</div>
+
+				<div class="img">
+					<img src="img/ho.png">
+				</div>
+				<div class="button">Загрузить фотографию</div>
+				<div class="t">Имя владельца</div>
+				<input type="text" placeholder="АННА ИОАНОВНА">
+				<div class="ch">
+				<div class="checkbox">
+					<input id="car" class="checbox_input" type="checkbox" ng-model="airkey.car" />
+					<label class="checbox_lablel label-has-icon" for="car">
+						<i class="icon-checkbox-checked label-has-icon_icon" ng-show="airkey.car"></i>
+						<i class="icon-checkbox label-has-icon_icon" ng-show="!airkey.car"></i>
+						Пропускать машину
+					</label>
+				</div>
+				<div class="checkbox">
+					<input id="door" class="checbox_input" type="checkbox" ng-model="airkey.door" />
+					<label class="checbox_lablel label-has-icon" for="door">
+						<i class="icon-checkbox-checked label-has-icon_icon" ng-show="airkey.door"></i>
+						<i class="icon-checkbox label-has-icon_icon" ng-show="!airkey.door"></i>
+						Открывать дверь
+					</label>
+				</div>
+				</div>
+				<button class="button" ng-click="addBackground()">
+					Открыть дверь
+				</button>
+				<div class="buttons">
+					<div class="btn no">ЗАКРЫТЬ</div>
+					<div class="btn yes">ДОБАВИТЬ</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<!--
+	<div class="bar bar-footer counters-footer">
+		<div class="footer-buttons">
+			<button class="button-bottom" ng-click="goBack()">
           <span>Сохранить</span>
         </button>
-        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+			<button class="button-circle pull-right" type="button" ui-sref="main.dash">
           <i class="icon-td-back"></i>
         </button>
-    </div>
-  </div>
+		</div>
+	</div>
+	-->
 </ion-vew>

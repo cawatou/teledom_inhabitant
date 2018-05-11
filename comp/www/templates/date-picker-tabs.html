@@ -1,0 +1,9 @@
+<ion-scroll class="months-slider" zooming="true" direction="x" delegate-handle="months">
+  <div class="row">
+    <div class="col col-33 no-vertical-padding" ng-repeat="month in monthLabels | startMonthFilter : startMonth">
+      <a class="button button-block months-slider_picker" ng-class="{'active':isActive(month)}"  ng-click="click(month)">
+        {{month}}
+      </a>
+    </div>
+  </div>
+</ion-scroll>

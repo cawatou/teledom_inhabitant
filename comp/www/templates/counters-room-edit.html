@@ -1,0 +1,40 @@
+<ion-view title="{{user.address.street + ' ' + user.address.number  + user.address.litera  + ' кв. ' + user.address.flat}}">
+  <ion-content>
+    <div class="counters-room">
+      <div class="counters-room_header">
+        <button class="room_header_edit" ng-click="editRoomName(room)" ng-hide="room.edit"><i class="icon-edit"></i></button>
+        <button class="room_header_edit" ng-click="confirmRoomName(room)" ng-show="room.edit"><i class="icon-confirm"></i></button>
+        <span  ng-hide="room.edit">{{room.name}}</span>
+        <input class="room_header_input" id="room-{{room.id}}" placeholder="{{room.name}}" ng-model="room.name" ng-show="room.edit">
+      </div>
+      <div ng-repeat="roomcounter in room.counters" class="counters-room_counter">
+        <div class="room-counter_header room-counter_header-{{roomcounter.type}}">
+          <button class="room-counter_header_addPhoto" ng-click="addCounterPhoto()"><i class="icon-photo-grey"></i></button>
+          <button ng-hide="roomcounter.edit" class="room-counter_header_edit"  ng-click="editCounterName(room, roomcounter)" ><i class="icon-edit-small"></i></button>
+          <button ng-show="roomcounter.edit" class="room-counter_header_edit"  ng-click="confirmCounterName(roomcounter)" ><i class="icon-confirm-small"></i></button>
+          <span  ng-hide="roomcounter.edit">{{roomcounter.name}}</span>
+          <input class="room-counter_header_input" id="counter-{{room.id}}-{{roomcounter.id}}" placeholder="{{roomcounter.name}}" ng-model="roomcounter.name" ng-show="roomcounter.edit">
+        </div>
+        <div class="room-counter_body">
+          <span class="counter_number" ng-repeat="number in prepareCounterValue(roomcounter.value) track by $index">{{number}}</span>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer counters-footer counters-footer-has-message">
+    <div class="footer-buttons">
+        <button class="button-bottom" type="button" ng-click="goBack()">
+          <span>Сохранить</span>
+        </button>
+        <button class="button-circle pull-left" type="button" ng-click="goBack()">
+          <i class="icon-arrow icon-arrow-back"></i>
+        </button>
+        <button class="button-circle" type="button" ng-click="addCounter()">
+          <i class="icon-plus-menu"></i>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-view>
