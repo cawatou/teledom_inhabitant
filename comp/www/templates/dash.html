@@ -1,43 +1,242 @@
 <ion-view title="Teledom">
-  <div class="home-content-bg"></div>
-  <ion-content class="home-content" ng-class="{'has-main-nav':!newsMode, 'has-footer':newsMode}">
-    <div class="articel-preview" ng-class="{'full-size':news.full}" ng-repeat="news in newsList" ng-click="toggleNews(news)">
-      <div class="bg">
-      </div>
-      <div class="articel-preview_content">
-        <div class="row padding-vertical-17">
-          <div class="col no-vertical-padding">
-            <time class="date">{{news.date}}</time>
-        </div>
-      </div>
-        <div class="row padding-vertical-17">
-          <div class="col clearfix no-vertical-padding">
-            <div ng-repeat="type in news.types" class="type">
-              <i class="icon-{{type}}"></i>
+    <div class="home-content-bg"></div>
+    <ion-content class="home-content" ng-class="{'has-main-nav':!newsMode, 'has-footer':newsMode}">
+        <div class="tabs">
+            <div class="tab">
+                <input class="tab-radio" type="radio" id="tab-1" name="tab-group-1" checked>
+                <label class="tab-label" for="tab-1">ЗВОНКИ</label>
+                <div class="content">
+                    <!--<div class="r">
+                        <div class="item">
+                            <input type="radio" id="toggle3">
+                            <label for="toggle3">Сегодня</label>
+                        </div>
+                        <div class="item">
+                            <input type="radio" id="toggle4">
+                            <label for="toggle4">Неделя</label>
+                        </div>
+                        <div class="item">
+                            <div class="calendar"></div>
+                        </div>
+                    </div>-->
+                    <div class="c">
+                        <div class="item" onclick="active(this)" ng-repeat="news in newsList" ng-click="toggleNews(news)">
+                            <div class="data">
+                                {{news.date}}
+                            </div>
+                            <div class="img">
+                                <img src="img/ca.jpg">
+                            </div>
+                            <div class="popup">
+                                <div class="w">
+                                    <div class="img">
+                                        <img src="img/ca.jpg">
+                                    </div>
+                                    <div class="title2">{{news.date}}</div>
+                                    <div class="buttons">
+                                        <div class="btn no">ЗАКРЫТЬ</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3 class="header">
-              {{news.header}}
-            </h3>
-          </div>
+            <div class="tab">
+                <input class="tab-radio" type="radio" id="tab-2" name="tab-group-1">
+                <label class="tab-label" for="tab-2">НОВОСТИ</label>
+                <div class="content">
+                    <div class="r">
+                        <div class="item">
+                            <input type="radio" id="toggle3">
+                            <label for="toggle3">Сегодня</label>
+                        </div>
+                        <div class="item">
+                            <input type="radio" id="toggle4">
+                            <label for="toggle4">Неделя</label>
+                        </div>
+                        <div class="item">
+                            <div class="calendar"></div>
+                        </div>
+                    </div>
+                    <div class="a">
+                        <!--
+                        <div class="articel-preview" ng-class="{'full-size':news.full}" ng-repeat="news in newsList" ng-click="toggleNews(news)">
+                          <div class="bg">
+                          </div>
+                          <div class="articel-preview_content">
+                            <div class="row padding-vertical-17">
+                              <div class="col no-vertical-padding">
+                                <time class="date">{{news.date}}</time>
+                            </div>
+                          </div>
+                            <div class="row padding-vertical-17">
+                              <div class="col clearfix no-vertical-padding">
+                                <div ng-repeat="type in news.types" class="type">
+                                  <i class="icon-{{type}}"></i>
+                                </div>
+                                <h3 class="header">
+                                  {{news.header}}
+                                </h3>
+                              </div>
+                            </div>
+                            <div  class="row padding-vertical-17 message">
+                              <div class="col">
+                                {{news.message}}
+                              </div>
+                            </div>
+                          </div>
+                          <footer class="footer">
+                            <div class="footer-blur">
+                            </div>
+                            <button ng-show="!news.full" class="show-all">
+                              <i class="icon-arrow-down-white"></i>
+                            </button>
+                            <button ng-show="news.full" class="show-all">
+                              <i class="icon-arrow-up"></i>
+                            </button>
+                          </footer>
+                        </div>
+                        -->
+
+                        <div class="item articel-preview" ng-class="{'full-size':news.full}" ng-repeat="news in newsList" ng-click="toggleNews(news)">
+                            <div class="w">
+                                <div class="data">
+                                    {{news.date}}
+                                </div>
+                                <div class="status type" ng-repeat="type in news.types"><i class="icon-{{type}}"></i></div>
+                                <div class="more"></div>
+                            </div>
+                            <p class="n1">{{news.header}}</p>
+                            <p class="n2">{{news.message}}</p>
+                            <div class="popup">
+                                <div class="w">
+                                    <div class="title2">20/03/2018 22:00</div>
+                                    <p class="n1">Заголовок новости</p>
+                                    <p class="n2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation</p>
+                                    <div class="title2">Оставьте комментарий</div>
+                                    <input type="text" placeholder="Текст...">
+                                    <div class="buttons">
+                                        <div class="btn no">ЗАКРЫТЬ</div>
+                                        <div class="btn yes">ОПУБЛИКОВАТЬ</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab">
+                <input class="tab-radio" type="radio" id="tab-3" name="tab-group-1">
+                <label class="tab-label" for="tab-3">ПРОХОДЫ</label>
+                <div class="content">
+                    <div class="r">
+                        <div class="item">
+                            <input type="radio" id="toggle3">
+                            <label for="toggle3">Сегодня</label>
+                        </div>
+                        <div class="item">
+                            <input type="radio" id="toggle4">
+                            <label for="toggle4">Неделя</label>
+                        </div>
+                        <div class="item">
+                            <div class="calendar"></div>
+                        </div>
+                    </div>
+                    <div class="p">
+                        <div class="item" onclick="active(this)">
+                            <div class="img">
+                                <img src="img/ho.png">
+                            </div>
+                            <div class="w">
+                                <div class="data">
+                                    20/03/2018 22:00
+                                </div>
+                                <div class="more"></div>
+                                <div class="t">E18FF38A</div>
+                            </div>
+                            <div class="popup">
+                                <div class="w">
+                                    <div class="title2">Настройки ключа</div>
+                                    <div class="img">
+                                        <img src="img/ho.png">
+                                    </div>
+                                    <div class="button">Загрузить фотографию</div>
+                                    <div class="t">Имя владельца</div>
+                                    <input type="text" placeholder="АННА ИОАНОВНА">
+                                    <div class="buttons">
+                                        <div class="btn no">ЗАКРЫТЬ</div>
+                                        <div class="btn yes">ДОБАВИТЬ</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <img src="img/ho.png">
+                            </div>
+                            <div class="w">
+                                <div class="data">
+                                    20/03/2018 22:00
+                                </div>
+                                <div class="more"></div>
+                                <div class="t">E18FF38A</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <img src="img/ho.png">
+                            </div>
+                            <div class="w">
+                                <div class="data">
+                                    20/03/2018 22:00
+                                </div>
+                                <div class="more"></div>
+                                <div class="t">E18FF38A</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <img src="img/ho.png">
+                            </div>
+                            <div class="w">
+                                <div class="data">
+                                    20/03/2018 22:00
+                                </div>
+                                <div class="more"></div>
+                                <div class="t">E18FF38A</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <img src="img/ho.png">
+                            </div>
+                            <div class="w">
+                                <div class="data">
+                                    20/03/2018 22:00
+                                </div>
+                                <div class="more"></div>
+                                <div class="t">E18FF38A</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="img">
+                                <img src="img/ho.png">
+                            </div>
+                            <div class="w">
+                                <div class="data">
+                                    20/03/2018 22:00
+                                </div>
+                                <div class="more"></div>
+                                <div class="t">E18FF38A</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div  class="row padding-vertical-17 message">
-          <div class="col">
-            {{news.message}}
-          </div>
-        </div>
-      </div>
-      <footer class="footer">
-        <div class="footer-blur">
-        </div>
-        <button ng-show="!news.full" class="show-all">
-          <i class="icon-arrow-down-white"></i>
-        </button>
-        <button ng-show="news.full" class="show-all">
-          <i class="icon-arrow-up"></i>
-        </button>
-      </footer>
-    </div>
-  </ion-content>
+    </ion-content>
+    <!--
   <div class="bar bar-footer counters-footer">
     <div class="footer-buttons">
         <button class="button-circle pull-left" type="button" ui-sref="main.news.add">
@@ -49,28 +248,5 @@
     </div>
     <span>Сегодня {{newsList.length}}</span>
   </div>
-  <footer class="bar bar-footer main-nav" ng-class="{'main-nav-hidden':newsMode}">
-    <div class="row">
-      <div class="center col-33">
-        <button ng-disabled="checkPrivelege('air-key',main.airkey)" class="main-nav-button" ui-sref="main.airkey"><i class="icon-air-key-big icon-buttn" ></i><span class="main-nav-button-text main-nav-button-text-one-line">AIR KEY</span></button>
-      </div>
-      <div class="center col-33">
-        <button ng-disabled="checkPrivelege('visitors',main.visitors.dash)" class="main-nav-button" ui-sref="main.visitors.dash"><i class="icon-visitors-big icon-buttn" ></i><span class="main-nav-button-text">Они к вам приходили</span></button>
-      </div>
-      <div class="center col-33">
-        <button ng-disabled="checkPrivelege('video',main.video)" class="main-nav-button" ui-sref="main.video"><i class="icon-camera icon-buttn" ></i><span class="main-nav-button-text main-nav-button-text-one-line">Видео</span></button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="center col-33">
-        <button class="main-nav-button" ui-sref="main.profile.dash"><i class="icon-profile-white icon-buttn icon-sm" ></i><span class="main-nav-button-text main-nav-button-text-one-line">Мой Кабиннет</span></button>
-      </div>
-      <div class="center col-33">
-        <button class="main-nav-button" ui-sref="main.services.dash"><i class="icon-tools icon-buttn icon-sm" ></i><span class="main-nav-button-text">Услуги Заявки</span></button>
-      </div>
-      <div class="center col-33">
-        <button ng-disabled="true"  class="main-nav-button" ui-sref="main.counters.dash"><i class="icon-meter icon-buttn icon-sm" ></i><span class="main-nav-button-text main-nav-button-text-one-line">Счетчики</span></button>
-      </div>
-    </div>
-  </footer>
+    -->
 </ion-view>
