@@ -406,34 +406,20 @@ angular.module('starter.controllers', [])
             $ionicHistory.goBack();
         }
     })
-    .controller('ServicesDashCtrl', function ($scope, $state, ServicesService, AuthService, $ionicHistory) {
-        $scope.servicesList = [];
+    .controller('ServicesDashCtrl', function ($scope, $state, AuthService, OrdersService, $ionicHistory) {
         $scope.user = AuthService.user();
-        ServicesService.getServices().then(function (data) {
-            $scope.servicesList = data;
-        })
         $scope.goBack = function () {
             $ionicHistory.goBack();
         }
-        $scope.goTo = function (service) {
-            var state = '';
-            switch (service.type) {
-                case 'autocheck':
-                    state = 'main.services.autocheck';
-                    break;
-                case 'application-done':
-                    state = 'main.services.application.done'
-                    break;
-                case 'application-current':
-                    state = 'main.services.application.current'
-                    break;
-                default:
-                    state = 'main.dash';
-            }
-            $state.go(state, {
-                'service': service
+        $scope.goTo = function (order) {
+            $state.go('main.services.application.current', {
+                'order': order
             })
         };
+
+        OrdersService.getOrders().then(function (data) {
+            $scope.ordersList = data;
+        })
     })
     .controller('ServicesAddCtrl', function ($scope, $state, $ionicActionSheet, $ionicPopup, ImageService, $ionicHistory, AuthService) {
         $scope.activeService = null;
@@ -542,72 +528,7 @@ angular.module('starter.controllers', [])
         }
     })
     .controller('ServicesApplicationCurrentCtrl', function ($scope, $timeout, $state, $ionicPopup, $ionicHistory, AuthService) {
-        $scope.user = AuthService.user();
-        $scope.service = $state.params.service;
-        $scope.boost;
-        $scope.map = {center: {latitude: 45, longitude: -73}, zoom: 8};
-        $scope.togglePayment = function () {
-            $scope.freeboost = false;
-        }
-        $scope.toggleFree = function () {
-            $scope.paymentboost = false;
-        }
-        $scope.speedUp = function () {
-            var myPopup = $ionicPopup.show({
-                templateUrl: 'templates/service-application-popup-boost.html',
-                title: 'Придать ускорение Мастеру',
-                scope: $scope,
-                buttons: [
-                    {
-                        text: 'отмена',
-                        onTap: function (e) {
-                            return;
-                        }
-                    },
-                    {
-                        text: 'отправить',
-                        type: 'button-positive',
-                        onTap: function (e) {
-                            $scope.boosted = true;
-                            return;
-                        }
-                    }
-                ]
-            });
-        }
-        var directionsService = new google.maps.DirectionsService();
-
-        $scope.$on('$ionicView.afterEnter', function () {
-            var map = document.getElementById('map'),
-                directionsDisplay = new google.maps.DirectionsRenderer(),
-                remaindHeight = window.innerHeight - map.getBoundingClientRect().top;
-            map.style.height = remaindHeight > 300 ? remaindHeight + 'px' : 300 + 'px';
-            var myLatlng = new google.maps.LatLng(40.734359, -73.850303),
-                mapOptions = {
-                    center: myLatlng,
-                    zoom: 16,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    disableDefaultUI: true
-                },
-                map = new google.maps.Map(document.getElementById("map"), mapOptions),
-                request = {
-                    origin: {lat: 40.734359, lng: -73.850303},
-                    destination: {lat: 40.732253, lng: -73.849284},
-                    travelMode: 'WALKING'
-                };
-
-            masterMarker = new google.maps.Marker({
-                position: {lat: 40.733326, lng: -73.849799},
-                map: map,
-                icon: 'assets/icon/map-master.png'
-            });
-            directionsDisplay.setMap(map);
-            directionsService.route(request, function (result, status) {
-                if (status == 'OK') {
-                    directionsDisplay.setDirections(result);
-                }
-            });
-        });
+        $scope.order = $state.params.order;
         $scope.goBack = function () {
             $ionicHistory.goBack();
         }

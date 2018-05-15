@@ -264,7 +264,7 @@ $ionicPlatform.ready(function() {
   .state('main.services.application.current', {
     url: 'current',
     params:{
-      service:null
+      order:null
     },
     templateUrl:'templates/services-application-current.html',
     controller: 'ServicesApplicationCurrentCtrl'

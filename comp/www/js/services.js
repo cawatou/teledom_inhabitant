@@ -234,6 +234,30 @@ angular.module('starter.services', [])
             }
         }
     })
+    .service('OrdersService', function ($q, $timeout, $rootScope, PudnubProvider) {
+        return {
+            getOrders: function () {
+                PudnubProvider.publish({event: "mobile_orders"});
+                return $q(function (resolve, reject) {
+                    $rootScope.$on("mobile_orders", function (event, src) {
+                        var arr = [], data = [], item;
+                        data = src.data.fields;
+                        console.log("mobile_orders fields :" + JSON.stringify(data));
+                        for (let i = 0; i < data.length; i++) {
+                            item = data[i];
+                            arr.push({
+                                title: item.title,
+                                date: item.date,
+                                comment: item.comment,
+                                complete: item.complete
+                            });
+                        }
+                        resolve(arr);
+                    });
+                });
+            }
+        }
+    })
     .factory('ImageService', function ($cordovaCamera, FileService, $q, $cordovaFile) {
 
         function makeid() {
@@ -571,84 +595,6 @@ angular.module('starter.services', [])
                         }, {
                             name: 'Камера на улице 2',
                             bg: 'assets/images/bg-login.jpg'
-                        }]);
-                    }, 0);
-                });
-            }
-        }
-    })
-    .service('ServicesService', function ($q, $timeout) {
-        return {
-            getServices: function () {
-                return $q(function (resolve, reject) {
-                    $timeout(function () {
-                        resolve([{
-                            date: '21.04.17',
-                            time: '15:10',
-                            header: "В вашем доме проводиться капитальный ремонт",
-                            type: 'application-current',
-                            types: ['photo', 'share', 'time'],
-                            startLocation: {
-                                lat: 'assets/images/bg-login.jpg',
-                                lng: '',
-                                name: 'Улица Лейтенанта Шмида, 1'
-                            },
-                            finishLoaction: {
-                                lat: 'assets/images/bg-login.jpg',
-                                lng: '',
-                                name: 'Улица Лейтенанта Шмида, 99'
-                            },
-                            message: 'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet'
-                        }, {
-                            date: '21.04.17',
-                            time: '15:10',
-                            header: "В вашем доме проводиться капитальный ремонт",
-                            type: 'application-current',
-                            types: ['photo', 'share', 'time'],
-                            master: {
-                                photo: 'assets/images/chuck.jpg',
-                                name: 'Иван Иванович ',
-                                time: '12-13:00'
-                            },
-                            startLocation: {
-                                lat: 'assets/images/bg-login.jpg',
-                                lng: '',
-                                name: 'Улица Лейтенанта Шмида, 1'
-                            },
-                            finishLoaction: {
-                                lat: 'assets/images/bg-login.jpg',
-                                lng: '',
-                                name: 'Улица Лейтенанта Шмида, 99'
-                            },
-                            message: 'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet'
-                        }, {
-                            date: '21.04.17',
-                            time: '15:10',
-                            header: "В вашем доме проводиться капитальный ремонт",
-                            type: 'application-done',
-                            types: ['photo', 'share', 'time'],
-                            master: {
-                                photo: 'assets/images/chuck.jpg',
-                                header: 'Мастер Иван Иванович закрыл заявку в течение 6 рабочих часов',
-                                text: 'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet'
-                            },
-                            before: {
-                                photo: 'assets/images/bg-login.jpg',
-                                date: '21.04.17'
-                            },
-                            after: {
-                                photo: 'assets/images/bg-login.jpg',
-                                date: '21.04.17'
-                            },
-                            message: 'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet'
-                        }, {
-                            date: '21.04.17',
-                            time: '15:10',
-                            header: "В вашем доме проводиться капитальный ремонт",
-                            type: 'autocheck',
-                            number: 21321,
-                            types: ['share', 'time'],
-                            message: 'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet'
                         }]);
                     }, 0);
                 });
