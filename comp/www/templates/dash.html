@@ -20,19 +20,19 @@
                         </div>
                     </div>-->
                     <div class="c">
-                        <div class="item" onclick="active(this)" ng-repeat="news in newsList" ng-click="toggleNews(news)">
+                        <div class="item" onclick="active(this)" ng-repeat="call in callsList">
                             <div class="data">
-                                {{news.date}}
+                                {{call.time}}
                             </div>
                             <div class="img">
-                                <img src="img/ca.jpg">
+                                <img src="{{call.avatar}}">
                             </div>
                             <div class="popup">
                                 <div class="w">
                                     <div class="img">
-                                        <img src="img/ca.jpg">
+                                        <img src="{{call.avatar}}">
                                     </div>
-                                    <div class="title2">{{news.date}}</div>
+                                    <div class="title2">{{call.time}}</div>
                                     <div class="buttons">
                                         <div class="btn no">ЗАКРЫТЬ</div>
                                     </div>
@@ -46,7 +46,7 @@
                 <input class="tab-radio" type="radio" id="tab-2" name="tab-group-1">
                 <label class="tab-label" for="tab-2">НОВОСТИ</label>
                 <div class="content">
-                    <div class="r">
+                  <!--  <div class="r">
                         <div class="item">
                             <input type="radio" id="toggle3">
                             <label for="toggle3">Сегодня</label>
@@ -58,47 +58,8 @@
                         <div class="item">
                             <div class="calendar"></div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="a">
-                        <!--
-                        <div class="articel-preview" ng-class="{'full-size':news.full}" ng-repeat="news in newsList" ng-click="toggleNews(news)">
-                          <div class="bg">
-                          </div>
-                          <div class="articel-preview_content">
-                            <div class="row padding-vertical-17">
-                              <div class="col no-vertical-padding">
-                                <time class="date">{{news.date}}</time>
-                            </div>
-                          </div>
-                            <div class="row padding-vertical-17">
-                              <div class="col clearfix no-vertical-padding">
-                                <div ng-repeat="type in news.types" class="type">
-                                  <i class="icon-{{type}}"></i>
-                                </div>
-                                <h3 class="header">
-                                  {{news.header}}
-                                </h3>
-                              </div>
-                            </div>
-                            <div  class="row padding-vertical-17 message">
-                              <div class="col">
-                                {{news.message}}
-                              </div>
-                            </div>
-                          </div>
-                          <footer class="footer">
-                            <div class="footer-blur">
-                            </div>
-                            <button ng-show="!news.full" class="show-all">
-                              <i class="icon-arrow-down-white"></i>
-                            </button>
-                            <button ng-show="news.full" class="show-all">
-                              <i class="icon-arrow-up"></i>
-                            </button>
-                          </footer>
-                        </div>
-                        -->
-
                         <div class="item articel-preview" ng-class="{'full-size':news.full}" ng-repeat="news in newsList" ng-click="toggleNews(news)">
                             <div class="w">
                                 <div class="data">

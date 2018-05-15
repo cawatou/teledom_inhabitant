@@ -186,30 +186,32 @@ angular.module('starter.services', [])
                         resolve(arr);
                     });
                 });
-                /*
-                  $timeout(function(){
-                    resolve([{
-                      date:'21.04.17 в 15:10',
-                      header:"В вашем доме проводиться капитальный ремонт",
-                      types:['photo','share','time'],
-                      message:'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet'
-                    },{
-                      date:'21.04.17 в 15:10',
-                      header:"В вашем доме проводиться капитальный ремонт",
-                      types:['share','time'],
-                      message:'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet'
-                    },{
-                      date:'21.04.17 в 15:10',
-                      header:"В вашем доме проводиться капитальный ремонт",
-                      types:['share','time'],
-                      message:'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet'
-                    }]);
-                  },0);
-
-                });*/
             },
             addNews: function () {
 
+            }
+        }
+    })
+    .service('CallsService', function ($q, $timeout, $rootScope, PudnubProvider) {
+        return {
+            getCalls: function () {
+                PudnubProvider.publish({event: "mobile_calls"});
+                return $q(function (resolve, reject) {
+                    $rootScope.$on("mobile_calls", function (event, src) {
+                        var arr = [], data = [], item;
+                        data = src.data.fields;
+                        console.log("mobile_calls fields :" + JSON.stringify(data));
+                        for (let i = 0; i < data.length; i++) {
+                            //data = JSON.parse(JSON.stringify(news));
+                            item = data[i];
+                            arr.push({
+                                time: item.time,
+                                avatar: item.avatar
+                            });
+                        }
+                        resolve(arr);
+                    });
+                });
             }
         }
     })
