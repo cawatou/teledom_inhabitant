@@ -612,7 +612,7 @@ angular.module('starter.controllers', [])
             $ionicHistory.goBack();
         }
     })
-    .controller('DashCtrl', function ($scope, $state, NewsService, CallsService, AuthService) {
+    .controller('DashCtrl', function ($scope, $state, NewsService, CallsService, KeyopenService, AuthService) {
         $scope.user = AuthService.user();
         $scope.newsList = [];
         $scope.newsMode = false;
@@ -642,12 +642,17 @@ angular.module('starter.controllers', [])
             }
             $scope.newsMode = false;
         }
+
+        CallsService.getCalls().then(function (data) {
+            $scope.callsList = data;
+        })
+
         NewsService.getNews().then(function (data) {
             $scope.newsList = data;
         })
 
-        CallsService.getCalls().then(function (data) {
-            $scope.callsList = data;
+        KeyopenService.getItems().then(function (data) {
+            $scope.keyopenList = data;
         })
     })
     .controller('NewsAddCtrl', function ($scope, $ionicActionSheet, NewsService, ImageService, $ionicHistory, $filter) {

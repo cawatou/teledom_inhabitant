@@ -91,7 +91,7 @@
                 <input class="tab-radio" type="radio" id="tab-3" name="tab-group-1">
                 <label class="tab-label" for="tab-3">ПРОХОДЫ</label>
                 <div class="content">
-                    <div class="r">
+                    <!--<div class="r">
                         <div class="item">
                             <input type="radio" id="toggle3">
                             <label for="toggle3">Сегодня</label>
@@ -103,18 +103,18 @@
                         <div class="item">
                             <div class="calendar"></div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="p">
-                        <div class="item" onclick="active(this)">
+                        <div class="item" onclick="active(this)" ng-repeat="keyopen in keyopenList">
                             <div class="img">
-                                <img src="img/ho.png">
+                                <img src="{{keyopen.avatar}}">
                             </div>
                             <div class="w">
                                 <div class="data">
-                                    20/03/2018 22:00
+                                    {{keyopen.time}}
                                 </div>
                                 <div class="more"></div>
-                                <div class="t">E18FF38A</div>
+                                <div class="t">{{keyopen.number}}</div>
                             </div>
                             <div class="popup">
                                 <div class="w">
@@ -132,66 +132,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="img">
-                                <img src="img/ho.png">
-                            </div>
-                            <div class="w">
-                                <div class="data">
-                                    20/03/2018 22:00
-                                </div>
-                                <div class="more"></div>
-                                <div class="t">E18FF38A</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="img">
-                                <img src="img/ho.png">
-                            </div>
-                            <div class="w">
-                                <div class="data">
-                                    20/03/2018 22:00
-                                </div>
-                                <div class="more"></div>
-                                <div class="t">E18FF38A</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="img">
-                                <img src="img/ho.png">
-                            </div>
-                            <div class="w">
-                                <div class="data">
-                                    20/03/2018 22:00
-                                </div>
-                                <div class="more"></div>
-                                <div class="t">E18FF38A</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="img">
-                                <img src="img/ho.png">
-                            </div>
-                            <div class="w">
-                                <div class="data">
-                                    20/03/2018 22:00
-                                </div>
-                                <div class="more"></div>
-                                <div class="t">E18FF38A</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="img">
-                                <img src="img/ho.png">
-                            </div>
-                            <div class="w">
-                                <div class="data">
-                                    20/03/2018 22:00
-                                </div>
-                                <div class="more"></div>
-                                <div class="t">E18FF38A</div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

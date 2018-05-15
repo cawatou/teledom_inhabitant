@@ -172,10 +172,7 @@ angular.module('starter.services', [])
                         data = src.data.fields;
                         console.log("mobile_news fields :" + JSON.stringify(data));
                         for (let i = 0; i < data.length; i++) {
-                            //data = JSON.parse(JSON.stringify(news));
                             item = data[i];
-                            console.log("mobile_news item :" + JSON.stringify(item));
-                            console.log("mobile_news date :", item.date);
                             arr.push({
                                 date: item.date,
                                 header: item.title,
@@ -202,11 +199,33 @@ angular.module('starter.services', [])
                         data = src.data.fields;
                         console.log("mobile_calls fields :" + JSON.stringify(data));
                         for (let i = 0; i < data.length; i++) {
-                            //data = JSON.parse(JSON.stringify(news));
                             item = data[i];
                             arr.push({
                                 time: item.time,
                                 avatar: item.avatar
+                            });
+                        }
+                        resolve(arr);
+                    });
+                });
+            }
+        }
+    })
+    .service('KeyopenService', function ($q, $timeout, $rootScope, PudnubProvider) {
+        return {
+            getItems: function () {
+                PudnubProvider.publish({event: "mobile_keyopen"});
+                return $q(function (resolve, reject) {
+                    $rootScope.$on("mobile_keyopen", function (event, src) {
+                        var arr = [], data = [], item;
+                        data = src.data.fields;
+                        console.log("mobile_keyopen fields :" + JSON.stringify(data));
+                        for (let i = 0; i < data.length; i++) {
+                            item = data[i];
+                            arr.push({
+                                time: item.time,
+                                avatar: item.avatar,
+                                number: item.number
                             });
                         }
                         resolve(arr);
