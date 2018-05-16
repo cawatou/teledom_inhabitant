@@ -575,6 +575,18 @@ angular.module('starter.controllers', [])
         KeyopenService.getItems().then(function (data) {
             $scope.keyopenList = data;
         })
+
+        $scope.goTo = function (news) {
+            $state.go('main.news.current', {
+                'news': news
+            })
+        };
+    })
+    .controller('NewsCurrentCtrl', function ($scope, $timeout, $state, $ionicPopup, $ionicHistory, AuthService) {
+        $scope.news = $state.params.news;
+        $scope.goBack = function () {
+            $ionicHistory.goBack();
+        }
     })
     .controller('NewsAddCtrl', function ($scope, $ionicActionSheet, NewsService, ImageService, $ionicHistory, $filter) {
         $scope.article = {

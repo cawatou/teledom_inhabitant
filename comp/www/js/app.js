@@ -1,19 +1,19 @@
 // Ionic Starter App
 
-const PUBLISH_KEY 			= 'pub-c-93f04d9d-dac3-46f6-930d-164cce692f44';
-const SUBSCRIBE_KEY			= 'sub-c-e2ff393a-a729-11e6-a114-0619f8945a4f';
-const SECRET_KEY 			= 'sec-c-N2M2OWY0NWQtOTA4NS00ZTg0LTkwNTEtZWQ2ODQ4NDIwMDdh';
-const SKIPO_GROUP	 		= 'skipodev-01';//'dev_test'; //'skipodev'
-const STDBY_SUFFIX	        = '-stdby';
+const PUBLISH_KEY = 'pub-c-93f04d9d-dac3-46f6-930d-164cce692f44';
+const SUBSCRIBE_KEY = 'sub-c-e2ff393a-a729-11e6-a114-0619f8945a4f';
+const SECRET_KEY = 'sec-c-N2M2OWY0NWQtOTA4NS00ZTg0LTkwNTEtZWQ2ODQ4NDIwMDdh';
+const SKIPO_GROUP = 'skipodev-01';//'dev_test'; //'skipodev'
+const STDBY_SUFFIX = '-stdby';
 
-const SHARED_PREFS			= "NativeStorage";
-const CALL_CENTER_NUMBER	= "CALL_CENTER_NUMBER";
-const CLIENT_PHONE_NUMBER	= "CLIENT_PHONE_NUMBER";
-const DOMOFON_PHONE_NUMBER	= "DOMOFON_PHONE_NUMBER";
-const PUBNUB_PUBLISH_KEY 	= "PUBNUB_PUBLISH_KEY";
-const PUBNUB_SUBSCRIBE_KEY 	= "PUBNUB_SUBSCRIBE_KEY";
-const PUBNUB_SECRET_KEY 	= "PUBNUB_SECRET_KEY";
-const CALL_ENABLED			= "CALL_ENABLED";
+const SHARED_PREFS = "NativeStorage";
+const CALL_CENTER_NUMBER = "CALL_CENTER_NUMBER";
+const CLIENT_PHONE_NUMBER = "CLIENT_PHONE_NUMBER";
+const DOMOFON_PHONE_NUMBER = "DOMOFON_PHONE_NUMBER";
+const PUBNUB_PUBLISH_KEY = "PUBNUB_PUBLISH_KEY";
+const PUBNUB_SUBSCRIBE_KEY = "PUBNUB_SUBSCRIBE_KEY";
+const PUBNUB_SECRET_KEY = "PUBNUB_SECRET_KEY";
+const CALL_ENABLED = "CALL_ENABLED";
 
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -22,301 +22,309 @@ const CALL_ENABLED			= "CALL_ENABLED";
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ngCordova', 'pubnub.angular.service', 'starter.controllers', 'starter.services', 'starter.directives', 'credit-cards'])
-.constant('AUTH_EVENTS', {
-  notAuthenticated: 'auth-not-authenticated',
-  notAuthorized: 'auth-not-authorized'
-})
-.run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, PudnubProvider) {
-  PudnubProvider.init();
+    .constant('AUTH_EVENTS', {
+        notAuthenticated: 'auth-not-authenticated',
+        notAuthorized: 'auth-not-authorized'
+    })
+    .run(function ($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, PudnubProvider) {
+        PudnubProvider.init();
 
-$ionicPlatform.ready(function() {
-      console.log('platform Ready!');
-      if ( window.cordova ) {
-          if ( window.cordova.plugins.Keyboard ) {
-              cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-              cordova.plugins.Keyboard.disableScroll(true);
-         }
-          window.screenLocker.unlock(function() {
-              console.log('screen unlock');
-          }, function(e) {
-              console.log('screen unlock error: ' + e);
-          }, 0);
-      }
+        $ionicPlatform.ready(function () {
+            console.log('platform Ready!');
+            if (window.cordova) {
+                if (window.cordova.plugins.Keyboard) {
+                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                    cordova.plugins.Keyboard.disableScroll(true);
+                }
+                window.screenLocker.unlock(function () {
+                    console.log('screen unlock');
+                }, function (e) {
+                    console.log('screen unlock error: ' + e);
+                }, 0);
+            }
 
-      if(window.StatusBar) {
-          StatusBar.styleDefault();
-      }
+            if (window.StatusBar) {
+                StatusBar.styleDefault();
+            }
 
-      mSharedPreferences.store(PUBNUB_PUBLISH_KEY, PUBLISH_KEY);
-      mSharedPreferences.store(PUBNUB_SUBSCRIBE_KEY, SUBSCRIBE_KEY);
-      mSharedPreferences.store(PUBNUB_SECRET_KEY, SECRET_KEY);
+            mSharedPreferences.store(PUBNUB_PUBLISH_KEY, PUBLISH_KEY);
+            mSharedPreferences.store(PUBNUB_SUBSCRIBE_KEY, SUBSCRIBE_KEY);
+            mSharedPreferences.store(PUBNUB_SECRET_KEY, SECRET_KEY);
 
-  });
-  
-  $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
-    if (!AuthService.isAuthenticated()) {
-      if(next.data && next.data.requiresAuth){
-        event.preventDefault();
-        $state.go('login.phone');
-      }
-    }
-  });
-})
+        });
 
-.config(function($stateProvider, $compileProvider, $urlRouterProvider) {
-  $compileProvider.debugInfoEnabled(false);
-  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|file|blob|cdvfile):|data:image\//);
-  $stateProvider
-  .state('login', {
-    url: '/login',
-    abstract:true,
-    template: '<ion-nav-view/>'
-    // templateUrl:'templates/login.html',
-    // controller: 'LoginCtrl'
-  })
-  .state('phone-call', {
-    url: '/phone-call',
-    templateUrl: 'templates/phone-call.html',
-    controller: 'PhoneCallCtrl'
-  })
-  .state('login.phone', {
-    url: '/phone',
-    templateUrl: 'templates/forgot-number.html',
-    controller: 'LoginPhoneCtrl'
-  })
-  .state('login.code', {
-    url: '/code/',
-    templateUrl: 'templates/forgot-code.html',
-    params:{
-      login:true,
-      phone:''
-    },
-    controller: 'LoginCodeCtrl'
-  })
-  .state('main', {
-    url: '/',
-    template: '<ion-nav-view/>',
-    abstract:true,
-    data:{
-      requiresAuth:true
-    }
-  })
-  .state('main.balance', {
-    url: 'balance/',
-    template: '<ion-nav-view/>',
-    abstract:true
-  })
-  .state('main.adv', {
-    url: 'adv/',
-    template: '<ion-nav-view/>',
-    abstract:true
-  })
-  .state('main.adv.hello', {
-    url: 'hello',
-    templateUrl: 'templates/adv-hello.html',
-    controller:'AdvHelloCtrl'
-  })
-  .state('main.adv.add-card', {
-    url: 'add-card',
-    templateUrl: 'templates/adv-add-card.html',
-    controller:'AdvAddCardCtrl'
-  })
-  .state('main.adv.add-visitors', {
-    url: 'add-visitors',
-    templateUrl: 'templates/adv-add-visitors.html',
-    controller:'AdvAddVisitorsCtrl'
-  })
-  .state('main.adv.add-cameras', {
-    url: 'add-cameras',
-    templateUrl: 'templates/adv-add-cameras.html',
-    controller:'AdvAddCamerasCtrl'
-  })
-  .state('main.adv.add-air-key', {
-    url: 'add-air-key',
-    templateUrl: 'templates/adv-add-air-key.html',
-    controller:'AdvAddAirKeyCtrl'
-  })
-  .state('main.balance.dash', {
-    url: 'dash',
-    templateUrl:'templates/balance-dash.html',
-    controller:'BalanceDashCtrl'
-  })
-  .state('main.balance.pay', {
-    url: 'pay',
-    templateUrl:'templates/balance-pay.html',
-    controller:'BalancePayCtrl'
-  })
-  .state('main.balance.card', {
-    url: 'card',
-    params:{
-      card:null
-    },
-    templateUrl:'templates/balance-card.html',
-    controller:'BalanceCardCtrl'
-  })
-  .state('main.balance.add', {
-    url: 'add',
-    params:{
-      id:null
-    },
-    templateUrl:'templates/balance-add.html',
-    controller:'BalanceAddCtrl'
-  })
-  .state('main.airkey', {
-    url: 'airkey',
-    templateUrl: 'templates/airkey.html',
-    controller: 'AirkeyCtrl'
-  })
-  .state('main.visitors', {
-      url: 'visitors/',
-      abstract:true,
-      template: '<ion-nav-view/>'
-  })
-  .state('main.visitors.dash', {
-      url: 'dash',
-      templateUrl: 'templates/visitors.html',
-      controller: 'VisitorsCtrl'
-  })
-  .state('main.visitors.single', {
-      url: 'single',
-      params:{
-        visitors:null,
-        active:null
-      },
-      templateUrl: 'templates/visitors-single.html',
-      controller: 'VisitorsSingleCtrl'
-  })
-  .state('main.counters', {
-    url: 'counters/',
-    abstract:true,
-    template: '<ion-nav-view/>'
-  })
-  .state('main.counters.dash', {
-    url: 'dash/',
-    templateUrl: 'templates/counters-dash.html',
-    controller: 'CountersDashCtrl'
-  })
-  .state('main.counters.edit', {
-    url: 'edit/',
-    params: {counter: null},
-    templateUrl: 'templates/counters-edit.html',
-    controller: 'CountersEditCtrl'
-  })
-  .state('main.counters.room', {
-    url: 'room/',
-    abstract:true,
-    template: '<ion-nav-view/>'
-  })
-  .state('main.counters.room.add', {
-    url: 'add/',
-    params:{
-      counter:null
-    },
-    templateUrl: 'templates/counters-room-add.html',
-    controller: 'CountersRoomAddCtrl'
-  })
-  .state('main.counters.room.edit', {
-    url: 'add/',
-    params:{
-      counter:null,
-      room:null
-    },
-    templateUrl: 'templates/counters-room-edit.html',
-    controller: 'CountersRoomEditCtrl'
-  })
-  .state('main.video', {
-    url: 'video',
-    cache: false,
-    templateUrl: 'templates/video.html',
-    controller: 'VideoCtrl'
-  })
-  .state('main.services', {
-    url: 'services',
-    abstract:true,
-    template:'<ion-nav-view/>'
-  })
-  .state('main.services.dash', {
-    url: 'dash',
-    templateUrl:'templates/services-dash.html',
-    controller: 'ServicesDashCtrl'
-  })
-  .state('main.services.autocheck', {
-    url: 'autocheck',
-    params:{
-      service:null
-    },
-    templateUrl:'templates/services-autocheck.html',
-    controller: 'ServicesAutocheckCtrl'
-  })
-  .state('main.services.application', {
-    url: 'application',
-    abstract:true,
-    template:'<ion-nav-view/>'
-  })
-  .state('main.services.application.done', {
-    url: 'done',
-    params:{
-      service:null
-    },
-    templateUrl:'templates/services-application-done.html',
-    controller: 'ServicesApplicationDoneCtrl'
-  })
-  .state('main.services.application.current', {
-    url: 'current',
-    params:{
-      order:null
-    },
-    templateUrl:'templates/services-application-current.html',
-    controller: 'ServicesApplicationCurrentCtrl'
-  })
-  .state('main.services.add', {
-    url: 'add',
-    cache: false,
-    templateUrl:'templates/services-add.html',
-    controller: 'ServicesAddCtrl'
-  })
-  .state('main.dash', {
-    url: 'dash',
-    templateUrl: 'templates/dash.html',
-    controller: 'DashCtrl'
-  })
-  .state('main.news', {
-    url: 'news',
-    abstract:true,
-    template: '<ion-nav-view/>'
-  })
-  .state('main.news.add', {
-    url: 'add',
-    templateUrl: 'templates/news-add.html',
-    controller: 'NewsAddCtrl'
-  })
-  .state('main.profile', {
-    url: 'profile',
-    abstract:true,
-    template: '<ion-nav-view/>'
-  })
-  .state('main.profile.dash', {
-    url: 'dash',
-    templateUrl: 'templates/profile-dash.html',
-    controller: 'ProfileDashCtrl'
-  })
-  .state('main.profile.pacgajes', {
-    url: 'pacgajes',
-    templateUrl: 'templates/profile-pacgajes.html',
-    controller: 'ProfilePacgajesCtrl'
-  })
-  .state('main.profile.editinfo', {
-    url: 'info',
-    templateUrl: 'templates/profile-edit-info.html',
-    params:{
-      info:null,
-      infoname:null
-    },
-    controller: 'ProfileEditInfoCtrl'
-  });
-  $urlRouterProvider.otherwise(function ($injector, $location) {
-    var $state = $injector.get("$state");
-    $state.go("main.dash");
-  });
+        $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
+            if (!AuthService.isAuthenticated()) {
+                if (next.data && next.data.requiresAuth) {
+                    event.preventDefault();
+                    $state.go('login.phone');
+                }
+            }
+        });
+    })
 
-});
+    .config(function ($stateProvider, $compileProvider, $urlRouterProvider) {
+        $compileProvider.debugInfoEnabled(false);
+        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|file|blob|cdvfile):|data:image\//);
+        $stateProvider
+            .state('login', {
+                url: '/login',
+                abstract: true,
+                template: '<ion-nav-view/>'
+                // templateUrl:'templates/login.html',
+                // controller: 'LoginCtrl'
+            })
+            .state('phone-call', {
+                url: '/phone-call',
+                templateUrl: 'templates/phone-call.html',
+                controller: 'PhoneCallCtrl'
+            })
+            .state('login.phone', {
+                url: '/phone',
+                templateUrl: 'templates/forgot-number.html',
+                controller: 'LoginPhoneCtrl'
+            })
+            .state('login.code', {
+                url: '/code/',
+                templateUrl: 'templates/forgot-code.html',
+                params: {
+                    login: true,
+                    phone: ''
+                },
+                controller: 'LoginCodeCtrl'
+            })
+            .state('main', {
+                url: '/',
+                template: '<ion-nav-view/>',
+                abstract: true,
+                data: {
+                    requiresAuth: true
+                }
+            })
+            .state('main.balance', {
+                url: 'balance/',
+                template: '<ion-nav-view/>',
+                abstract: true
+            })
+            .state('main.adv', {
+                url: 'adv/',
+                template: '<ion-nav-view/>',
+                abstract: true
+            })
+            .state('main.adv.hello', {
+                url: 'hello',
+                templateUrl: 'templates/adv-hello.html',
+                controller: 'AdvHelloCtrl'
+            })
+            .state('main.adv.add-card', {
+                url: 'add-card',
+                templateUrl: 'templates/adv-add-card.html',
+                controller: 'AdvAddCardCtrl'
+            })
+            .state('main.adv.add-visitors', {
+                url: 'add-visitors',
+                templateUrl: 'templates/adv-add-visitors.html',
+                controller: 'AdvAddVisitorsCtrl'
+            })
+            .state('main.adv.add-cameras', {
+                url: 'add-cameras',
+                templateUrl: 'templates/adv-add-cameras.html',
+                controller: 'AdvAddCamerasCtrl'
+            })
+            .state('main.adv.add-air-key', {
+                url: 'add-air-key',
+                templateUrl: 'templates/adv-add-air-key.html',
+                controller: 'AdvAddAirKeyCtrl'
+            })
+            .state('main.balance.dash', {
+                url: 'dash',
+                templateUrl: 'templates/balance-dash.html',
+                controller: 'BalanceDashCtrl'
+            })
+            .state('main.balance.pay', {
+                url: 'pay',
+                templateUrl: 'templates/balance-pay.html',
+                controller: 'BalancePayCtrl'
+            })
+            .state('main.balance.card', {
+                url: 'card',
+                params: {
+                    card: null
+                },
+                templateUrl: 'templates/balance-card.html',
+                controller: 'BalanceCardCtrl'
+            })
+            .state('main.balance.add', {
+                url: 'add',
+                params: {
+                    id: null
+                },
+                templateUrl: 'templates/balance-add.html',
+                controller: 'BalanceAddCtrl'
+            })
+            .state('main.airkey', {
+                url: 'airkey',
+                templateUrl: 'templates/airkey.html',
+                controller: 'AirkeyCtrl'
+            })
+            .state('main.visitors', {
+                url: 'visitors/',
+                abstract: true,
+                template: '<ion-nav-view/>'
+            })
+            .state('main.visitors.dash', {
+                url: 'dash',
+                templateUrl: 'templates/visitors.html',
+                controller: 'VisitorsCtrl'
+            })
+            .state('main.visitors.single', {
+                url: 'single',
+                params: {
+                    visitors: null,
+                    active: null
+                },
+                templateUrl: 'templates/visitors-single.html',
+                controller: 'VisitorsSingleCtrl'
+            })
+            .state('main.counters', {
+                url: 'counters/',
+                abstract: true,
+                template: '<ion-nav-view/>'
+            })
+            .state('main.counters.dash', {
+                url: 'dash/',
+                templateUrl: 'templates/counters-dash.html',
+                controller: 'CountersDashCtrl'
+            })
+            .state('main.counters.edit', {
+                url: 'edit/',
+                params: {counter: null},
+                templateUrl: 'templates/counters-edit.html',
+                controller: 'CountersEditCtrl'
+            })
+            .state('main.counters.room', {
+                url: 'room/',
+                abstract: true,
+                template: '<ion-nav-view/>'
+            })
+            .state('main.counters.room.add', {
+                url: 'add/',
+                params: {
+                    counter: null
+                },
+                templateUrl: 'templates/counters-room-add.html',
+                controller: 'CountersRoomAddCtrl'
+            })
+            .state('main.counters.room.edit', {
+                url: 'add/',
+                params: {
+                    counter: null,
+                    room: null
+                },
+                templateUrl: 'templates/counters-room-edit.html',
+                controller: 'CountersRoomEditCtrl'
+            })
+            .state('main.video', {
+                url: 'video',
+                cache: false,
+                templateUrl: 'templates/video.html',
+                controller: 'VideoCtrl'
+            })
+            .state('main.services', {
+                url: 'services',
+                abstract: true,
+                template: '<ion-nav-view/>'
+            })
+            .state('main.services.dash', {
+                url: 'dash',
+                templateUrl: 'templates/services-dash.html',
+                controller: 'ServicesDashCtrl'
+            })
+            .state('main.services.autocheck', {
+                url: 'autocheck',
+                params: {
+                    service: null
+                },
+                templateUrl: 'templates/services-autocheck.html',
+                controller: 'ServicesAutocheckCtrl'
+            })
+            .state('main.services.application', {
+                url: 'application',
+                abstract: true,
+                template: '<ion-nav-view/>'
+            })
+            .state('main.services.application.done', {
+                url: 'done',
+                params: {
+                    service: null
+                },
+                templateUrl: 'templates/services-application-done.html',
+                controller: 'ServicesApplicationDoneCtrl'
+            })
+            .state('main.services.application.current', {
+                url: 'current',
+                params: {
+                    order: null
+                },
+                templateUrl: 'templates/services-application-current.html',
+                controller: 'ServicesApplicationCurrentCtrl'
+            })
+            .state('main.services.add', {
+                url: 'add',
+                cache: false,
+                templateUrl: 'templates/services-add.html',
+                controller: 'ServicesAddCtrl'
+            })
+            .state('main.dash', {
+                url: 'dash',
+                templateUrl: 'templates/dash.html',
+                controller: 'DashCtrl'
+            })
+            .state('main.news', {
+                url: 'news',
+                abstract: true,
+                template: '<ion-nav-view/>'
+            })
+            .state('main.news.current', {
+                url: 'current',
+                params: {
+                    news: null
+                },
+                templateUrl: 'templates/news-current.html',
+                controller: 'NewsCurrentCtrl'
+            })
+            .state('main.news.add', {
+                url: 'add',
+                templateUrl: 'templates/news-add.html',
+                controller: 'NewsAddCtrl'
+            })
+            .state('main.profile', {
+                url: 'profile',
+                abstract: true,
+                template: '<ion-nav-view/>'
+            })
+            .state('main.profile.dash', {
+                url: 'dash',
+                templateUrl: 'templates/profile-dash.html',
+                controller: 'ProfileDashCtrl'
+            })
+            .state('main.profile.pacgajes', {
+                url: 'pacgajes',
+                templateUrl: 'templates/profile-pacgajes.html',
+                controller: 'ProfilePacgajesCtrl'
+            })
+            .state('main.profile.editinfo', {
+                url: 'info',
+                templateUrl: 'templates/profile-edit-info.html',
+                params: {
+                    info: null,
+                    infoname: null
+                },
+                controller: 'ProfileEditInfoCtrl'
+            });
+        $urlRouterProvider.otherwise(function ($injector, $location) {
+            var $state = $injector.get("$state");
+            $state.go("main.dash");
+        });
+
+    });
