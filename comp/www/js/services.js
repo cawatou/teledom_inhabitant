@@ -258,6 +258,20 @@ angular.module('starter.services', [])
             }
         }
     })
+    .service('AppopenService', function ($q, $timeout, $rootScope, PudnubProvider) {
+        return {
+            open: function () {
+                PudnubProvider.publish({event: "mobile_opendoor"});
+                return $q(function (resolve, reject) {
+                    $rootScope.$on("mobile_opendoor", function (event, src) {
+                        data = src.data.fields;
+                        console.log('door is open', data);
+                        resolve(data);
+                    });
+                });
+            }
+        }
+    })
     .factory('ImageService', function ($cordovaCamera, FileService, $q, $cordovaFile) {
 
         function makeid() {

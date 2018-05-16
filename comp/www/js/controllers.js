@@ -1,10 +1,17 @@
 angular.module('starter.controllers', [])
-    .controller('AppCtrl', function ($scope, $scope, $state, $ionicPopup, AuthService, AUTH_EVENTS) {
+    .controller('AppCtrl', function ($scope, $scope, $state, $ionicPopup, AuthService, AppopenService, AUTH_EVENTS) {
         $scope.user = AuthService.user();
 
         $scope.setCurrentUser = function (user) {
             $scope.user = user;
         };
+
+        $scope.openDoor = function () {
+            AppopenService.open().then(function (data) {
+                
+            })
+        };
+       
     })
     .controller('PhoneCallCtrl', function ($scope, $scope, $state, $ionicPopup, AuthService, AUTH_EVENTS) {
         $scope.photo = 'assets/images/chuck.jpg';
