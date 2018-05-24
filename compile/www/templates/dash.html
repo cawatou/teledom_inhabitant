@@ -1,0 +1,76 @@
+<ion-view title="Teledom">
+  <div class="home-content-bg"></div>
+  <ion-content class="home-content" ng-class="{'has-main-nav':!newsMode, 'has-footer':newsMode}">
+    <div class="articel-preview" ng-class="{'full-size':news.full}" ng-repeat="news in newsList" ng-click="toggleNews(news)">
+      <div class="bg">
+      </div>
+      <div class="articel-preview_content">
+        <div class="row padding-vertical-17">
+          <div class="col no-vertical-padding">
+            <time class="date">{{news.date}}</time>
+        </div>
+      </div>
+        <div class="row padding-vertical-17">
+          <div class="col clearfix no-vertical-padding">
+            <div ng-repeat="type in news.types" class="type">
+              <i class="icon-{{type}}"></i>
+            </div>
+            <h3 class="header">
+              {{news.header}}
+            </h3>
+          </div>
+        </div>
+        <div  class="row padding-vertical-17 message">
+          <div class="col">
+            {{news.message}}
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="footer-blur">
+        </div>
+        <button ng-show="!news.full" class="show-all">
+          <i class="icon-arrow-down-white"></i>
+        </button>
+        <button ng-show="news.full" class="show-all">
+          <i class="icon-arrow-up"></i>
+        </button>
+      </footer>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer counters-footer">
+    <div class="footer-buttons">
+        <button class="button-circle pull-left" type="button" ui-sref="main.news.add">
+          <i class="icon-plus-menu"></i>
+        </button>
+        <button class="button-circle pull-right" type="button" ng-click="resetMode()">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+    <span>Сегодня {{newsList.length}}</span>
+  </div>
+  <footer class="bar bar-footer main-nav" ng-class="{'main-nav-hidden':newsMode}">
+    <div class="row">
+      <div class="center col-33">
+        <button ng-disabled="checkPrivelege('air-key',main.airkey)" class="main-nav-button" ui-sref="main.airkey"><i class="icon-air-key-big icon-buttn" ></i><span class="main-nav-button-text main-nav-button-text-one-line">AIR KEY</span></button>
+      </div>
+      <div class="center col-33">
+        <button ng-disabled="checkPrivelege('visitors',main.visitors.dash)" class="main-nav-button" ui-sref="main.visitors.dash"><i class="icon-visitors-big icon-buttn" ></i><span class="main-nav-button-text">Они к вам приходили</span></button>
+      </div>
+      <div class="center col-33">
+        <button ng-disabled="checkPrivelege('video',main.video)" class="main-nav-button" ui-sref="main.video"><i class="icon-camera icon-buttn" ></i><span class="main-nav-button-text main-nav-button-text-one-line">Видео</span></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="center col-33">
+        <button class="main-nav-button" ui-sref="main.profile.dash"><i class="icon-profile-white icon-buttn icon-sm" ></i><span class="main-nav-button-text main-nav-button-text-one-line">Мой Кабиннет</span></button>
+      </div>
+      <div class="center col-33">
+        <button class="main-nav-button" ui-sref="main.services.dash"><i class="icon-tools icon-buttn icon-sm" ></i><span class="main-nav-button-text">Услуги Заявки</span></button>
+      </div>
+      <div class="center col-33">
+        <button ng-disabled="true"  class="main-nav-button" ui-sref="main.counters.dash"><i class="icon-meter icon-buttn icon-sm" ></i><span class="main-nav-button-text main-nav-button-text-one-line">Счетчики</span></button>
+      </div>
+    </div>
+  </footer>
+</ion-view>

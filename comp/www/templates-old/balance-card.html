@@ -1,0 +1,35 @@
+<ion-vew title="Средства оплаты">
+  <ion-content class="has-header has-footer">
+    <div class="subheader">
+      <span class="subheader_text">Карта {{card.type}}</span>
+    </div>
+    <div class="info-block item info-block-card">
+      <i class="icon-card info-block-card_card-icon"></i>
+      <span class="info-block-card_number">
+        {{card.start}} **** **** {{card.end}}
+      </span>
+      <i class="icon-trash info-block-card_open-trash" ng-click="deleteCard()"></i>
+      <i class="icon-edit-card info-block-card_open-edit" ui-sref="main.balance.add({id:card.id})"></i>
+    </div>
+    <div>
+      <label class="item item-input">
+        <input class="text-input" type="text" placeholder="Введите сумму" name="price" ng-model="price"></input>
+      </label>
+    </div>
+    <div class="article-form_photo article-button-input">
+      <button class="article-button-input_button full-size-white-button full-size-white-button-no-icon" ng-disabled="!price">
+        Оплатить
+      </button>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer counters-footer" ng-class="{'counters-footer-has-message':canPay}">
+    <div class="footer-buttons">
+        <button class="button-circle pull-left" type="button" ng-click="goBack()">
+          <i class="icon-arrow icon-arrow-back"></i>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-vew>

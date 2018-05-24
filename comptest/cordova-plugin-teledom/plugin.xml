@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-teledom" version="1.0.0">
+
+	<name>Skipo Teledom Service</name>
+  <description>Skipo Teledom Client Application Cordova Plugin</description>
+  <license>Apache 2.0</license>
+  <keywords>cordova,android,skipo,teledom,service</keywords>
+  <repo>https://github.com/Skipo/cordova-plugin-teledom.git</repo>
+
+  <platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="TeledomService">
+				<param name="android-package" value="io.ionic.starter.app.service" />
+			</feature>
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+		 	<receiver android:enabled="true" android:name="io.ionic.starter.app.receiver.CallStateReceiver">
+				<intent-filter android:priority="999">
+					<action android:name="android.intent.action.PHONE_STATE" />
+			 	</intent-filter>
+			</receiver>
+			<receiver android:enabled="true" android:name="io.ionic.starter.app.receiver.BootCompleteReceiver">
+				<intent-filter android:priority="999">
+					<action android:name="android.intent.action.BOOT_COMPLETED" />
+				 	<action android:name="android.intent.action.QUICKBOOT_POWERON" />
+				 	<action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+			 	</intent-filter>
+			</receiver>
+		</config-file>
+
+	 	<config-file target="AndroidManifest.xml" parent="/*">
+			<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+			<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+			<uses-permission android:name="android.permission.QUICKBOOT_POWERON" />
+			<uses-permission android:name="android.permission.WAKE_LOCK" />
+			<uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+			<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+			<uses-permission android:name="android.permission.CALL_PHONE" />
+	 	</config-file>
+
+	 	<!--<source-file src="src/android/java/ITelephony.aidl" target-dir="src/com/android/internal/telephony" />-->
+		<source-file src="src/android/java/BootCompleteReceiver.java"	target-dir="src/io/ionic/starter/app/receiver" />
+		<source-file src="src/android/java/CallStateReceiver.java"	target-dir="src/io/ionic/starter/app/receiver" />
+
+	</platform>
+
+</plugin>

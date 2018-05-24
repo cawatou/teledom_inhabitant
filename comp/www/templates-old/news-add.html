@@ -1,0 +1,59 @@
+<ion-vew title="Новая новость">
+  <ion-content class="has-footer has-header">
+    <form class="article-form">
+      <div class="article-form_header article-input">
+        <textarea type="text" class="article-input_iput" placeholder="Введите заголовок" ng-model="article.header" required/></textarea>
+      </div>
+      <div class="article-form_content article-input">
+        <textarea type="text" class="article-input_iput article-input_iput-textarea" placeholder="Введите текст новости" ng-model="article.content" required></textarea>
+      </div>
+      <div class="article-form_photo article-button-input" ng-hide="article.bg">
+        <button class="article-button-input_button full-size-white-button no-max-width" ng-click="addBackground()">
+          <i class="icon-add-bg full-size-white-button_icon" ></i> Добавить фото
+        </button>
+      </div>
+        <div class="articel-preview">
+          <div class="bg" id="articlebg">
+          </div>
+          <div class="articel-preview_content">
+            <div class="row padding-vertical-17">
+              <div class="col no-vertical-padding">
+                <time class="date" ng-style="{color:article.color}">{{article.date}} в {{article.time}}</time>
+              </div>
+            </div>
+            <div class="row padding-vertical-17">
+              <div class="col clearfix no-vertical-padding">
+                <div ng-repeat="type in article.types" class="type">
+                  <i class="icon-{{type}}"></i>
+                </div>
+                <h3 class="header" ng-style="{color:article.color}">
+                  {{article.header}}
+                </h3>
+              </div>
+            </div>
+            <div  class="row padding-vertical-17 message" ng-style="{color:article.color}">
+              <div class="col">
+                {{article.content}}
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="color-picker">
+        <div class="color-picker_button" ng-repeat="color in colors" ng-class="{'color-picker-active':article.color===color}">
+          <input type="radio" id="{{color}}" name="picker" class="color-picker_label" value="{{color}}" ng-model="article.color"/>
+          <label for="{{color}}" class="color-picker_input" ng-style="{'background-color':color}"></label>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+  <div class="bar bar-footer counters-footer">
+    <div class="footer-buttons">
+        <button class="button-bottom" type="button" ng-click="goBack()">
+          <span>Отправить</span>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-vew>

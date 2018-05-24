@@ -1,0 +1,60 @@
+<ion-view hide-nav-bar="true" class="login-content bg-photo content">
+  <ion-content overflow-scroll="true">
+    <div class="bottom-block-fixer">
+      <div class="row logo-row">
+        <div class="center col">
+          <div class="logo-conatiner">
+            <img src="assets/icon/logo.svg"/>
+          </div>
+        </div>
+      </div>
+      <div class="login-box">
+        <form ng-submit="login(data)" name="loginForm">
+          <div class=" row row-padding">
+            <div class="col">
+              <div class="list form-list">
+
+                <div>
+                  <label class="item item-input">
+                    <i class="icon-profile item-input_icon"></i>
+                    <input class="text-input" type="text" placeholder="Введите логин" name="email" ng-model="data.username" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <i class="icon-lock-closed item-input_icon"></i>
+                    <input class="text-input" type="password" placeholder="Введите пароль" name="password" ng-model="data.password" required>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="err-msg-row row-padding">
+            <p class="err-msg" ng-show="loginErr">
+              <i class="icon-danger"></i>
+               Неверная пара Логин/Пароль
+             </p>
+          </div>
+
+          <div class="row row-padding clearfix">
+              <div class="col col-50">
+                <a class="button-link button-block button pull-left" type="button" ui-sref="forgot.number">Забыли пароль?</a>
+              </div>
+              <div class="col col-50">
+                <a class="button-link button-block button pull-right" type="button" ui-sref="register">Регистрация</a>
+              </div>
+          </div>
+
+          <div class="bottom-block">
+            <ion-col class="signup-col">
+              <button class="submit-btn button button-has-loader" full type="submit" ng-disabled="loginForm.$invalid" >Войти
+                <div ng-show="loading" class="loader button-has-loader_loader"></div>
+              </button>
+            </ion-col>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

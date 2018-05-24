@@ -1,0 +1,39 @@
+<ion-view title="Service: Подъезд {{user.address.ladder}}">
+    <div class="home-content-bg"></div>
+    <ion-content>
+        <div class="title">
+            <a class="prev" ui-sref="main.dash"></a> Заявки
+        </div>
+        <!--<div class="i">
+            <div class="item add" ui-sref="main.services.add">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path style="fill:#3b8dc3;" d="M6,0V6H0V8H6v6H8V8h6V6H8V0Z" transform="translate(0 0)"/></svg>
+                <div>Оставить заявку</div>
+            </div>
+        </div>
+        <div class="r">
+            <div class="item">
+                <input type="radio" id="toggle3">
+                <label for="toggle1">Сегодня</label>
+            </div>
+            <div class="item">
+                <input type="radio" id="toggle4">
+                <label for="toggle4">Неделя</label>
+            </div>
+            <div class="item">
+                <div class="calendar"></div>
+            </div>
+        </div>-->
+        <div class="a">
+            <div class="item" ng-repeat="order in ordersList"  ng-click="goTo(order)">
+                <div class="w">
+                    <div class="data">
+                        {{order.date}}
+                    </div>
+                    <div class="more"></div>
+                </div>
+                <div class="t">{{order.title}}</div>
+            </div>
+        </div>
+
+    </ion-content>
+    </ion-vew>

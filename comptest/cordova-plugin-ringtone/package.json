@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "bundleDependencies": false,
+  "cordova_name": "RingtonePlugin",
+  "deprecated": false,
+  "description": "A starting point for a Cordova Plugin",
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-ringtone",
+  "platforms": [
+    "android"
+  ],
+  "repo": ""
+}

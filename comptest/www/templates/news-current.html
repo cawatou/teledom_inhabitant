@@ -1,0 +1,70 @@
+<ion-view>
+	<ion-content class="has-header has-footer">
+		<div class="popup pop-page">
+			<div class="w">
+				<div class="articel-preview no-margin" ng-click="articleFull = !articleFull" ng-class="{'full-size':articleFull}">
+					<div class="title">
+						<a class="prev" ng-click="goBack()"></a>
+					</div>
+					<div class="title">
+						{{news.header}}
+					</div>
+					<div class="data">
+						<time class="date">{{news.date}}</time>
+					</div>
+
+					<div class="t">
+						{{news.message}}
+					</div>
+					<!--
+          <footer class="footer">
+              <button ng-hide="articleFull" class="show-all">
+                <i class="icon-arrow-down-white"></i>
+              </button>
+                          <button ng-show="articleFull" class="show-all">
+                <i class="icon-arrow-up"></i>
+              </button>
+          </footer>
+          -->
+				</div>
+				<!--<div class="master-header">
+            <div ng-if="!service.master" class="no-master">
+                Заявка еще не распределена <br/> между мастерами
+            </div>
+            <div ng-if="service.master" class="flex-container">
+                <img class="master-header_photo" ng-src="{{service.master.photo}}">
+                <div class="master-header_text">Ваш мастер {{service.master.name}} уже спешит к Вам <br/> Ожидайте его с {{service.master.time}}</div>
+            </div>
+            <div ng-if="service.master" class="boost-message" ng-show='boosted'>
+                Уже бегу!
+            </div>
+        </div>
+        <button ng-if="service.master" class="button" ng-click="speedUp()" ng-class="{'speed-up-boosted': boosted }">
+            <i class="icon-boost full-size-white-button_icon"  ng-hide='boosted'></i>
+            <span ng-hide='boosted'>Придать ускорение</span>
+            <span ng-show='boosted'>Добавить ускорение</span>
+        </button>
+        <div class="map" data-tap-disabled="true" id="map"></div>
+        <button class="button" type="button" ng-if="service.master" ng-click="goBack()">
+            позвонить мастеру
+        </button>-->
+			</div>
+		</div>
+
+	</ion-content>
+	<!--
+  <div class="bar bar-footer counters-footer">
+      <div class="footer-buttons">
+          <button class="button-circle pull-left" type="button" ng-click="goBack()">
+      <i class="icon-arrow icon-arrow-back"></i>
+    </button>
+          <button class="button-bottom" type="button" ng-if="service.master" ng-click="goBack()">
+      <i class="icon-call-white"></i><span>позвонить мастеру</span>
+    </button>
+          <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+      <i class="icon-td-back"></i>
+    </button>
+      </div>
+  </div>
+-->
+</ion-view>

@@ -1,0 +1,20 @@
+<ion-vew title="Внести деньги на счет">
+  <ion-content class="has-header has-footer">
+    <div class="info-block item info-block-card" ng-repeat="method in methods">
+      <span class="info-block-card_number">
+        {{method.name}}
+      </span>
+      <i class="icon-arrow-right-black info-block-card_open-icon"></i>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer counters-footer">
+    <div class="footer-buttons">
+        <button class="button-circle pull-left" type="button" ng-click="goBack()">
+          <i class="icon-arrow icon-arrow-back"></i>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-vew>

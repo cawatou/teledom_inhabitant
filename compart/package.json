@@ -1,0 +1,65 @@
+{
+  "name": "domo1",
+  "version": "0.0.1",
+  "description": "An Ionic project",
+  "dependencies": {
+    "com.applurk.cordova-screen-locker": "file:cordova-plugin-screen-locker",
+    "com.skipo.cordova-plugin-ringtone": "./cordova-plugin-ringtone",
+    "cordova-android": "^6.3.0",
+    "cordova-plugin-camera": "^2.4.1",
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-console": "^1.1.0",
+    "cordova-plugin-device": "^1.1.7",
+    "cordova-plugin-device-motion": "^2.0.1",
+    "cordova-plugin-file": "^4.3.3",
+    "cordova-plugin-ionic-webview": "^1.2.1",
+    "cordova-plugin-media": "^5.0.2",
+    "cordova-plugin-nativestorage": "^2.3.1",
+    "cordova-plugin-ringtone": "file:cordova-plugin-ringtone",
+    "cordova-plugin-splashscreen": "^4.1.0",
+    "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-teledom": "file:cordova-plugin-teledom",
+    "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-plugin-x-toast": "^2.6.2",
+    "cordova-screen-locker": "^0.1.1",
+    "gulp": "^3.5.6",
+    "gulp-concat": "^2.2.0",
+    "gulp-minify-css": "^0.3.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^2.0.4",
+    "ionic-plugin-keyboard": "^2.2.1"
+  },
+  "devDependencies": {
+    "bower": "^1.3.3",
+    "gulp-util": "^2.2.14",
+    "shelljs": "^0.3.0"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-file": {},
+      "cordova-plugin-console": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-whitelist": {},
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-camera": {
+        "CAMERA_USAGE_DESCRIPTION": " ",
+        "PHOTOLIBRARY_USAGE_DESCRIPTION": " "
+      },
+      "com.skipo.cordova-plugin-ringtone": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-x-toast": {},
+      "cordova-plugin-media": {
+        "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO"
+      },
+      "cordova-plugin-ionic-webview": {},
+      "com.applurk.cordova-screen-locker": {},
+      "cordova-plugin-teledom": {},
+      "cordova-plugin-nativestorage": {},
+      "cordova-plugin-device-motion": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  }
+}

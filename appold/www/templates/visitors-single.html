@@ -1,0 +1,29 @@
+<ion-view class="bg-black" title="Они к Вам приходили">
+  <ion-content class="has-header has-footer has-slider-footer" scroll="false">
+    <ion-slides show-pager="false" options="options" slider="data.slider">
+      <ion-slide-page  class="visitor-slide" ng-repeat="visitor in visitors track by $index">
+        <img class="visitor-slide_avatar" ng-src="{{visitor.avatar}}" alt="">
+        <div class="visitor-slide_date" >{{createDate(visitor.time)}}</div>
+        <div class="visitor-slide_name" >{{visitor.name || 'Звонок в домофон'}}</div>
+      </ion-slide-page>
+    </ion-slides>
+  </ion-content>
+  <div class="slider-buttons">
+    <button ng-hide="activeIndex === 0 " ng-click="slideLeft()" class="slider-buttons_button pull-left">
+      <i class="icon-arrow-white"></i>
+    </button>
+    <button ng-hide="activeIndex === (visitors.length - 1)" ng-click="slideRight()" class="slider-buttons_button pull-right">
+      <i class="icon-arrow-white icon-arrow-white-right"></i>
+    </button>
+  </div>
+  <div class="bar bar-footer counters-footer">
+    <div class="footer-buttons">
+        <button class="button-circle pull-left" type="button" ng-click="goBack()">
+          <i class="icon-arrow icon-arrow-back"></i>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-view>

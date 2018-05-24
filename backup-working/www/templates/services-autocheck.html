@@ -1,0 +1,39 @@
+<ion-vew title="Service: Подъезд {{user.address.ladder}}">
+  <ion-content class="has-header has-footer">
+    <div class="balance-item">
+      {{service.date}}
+    </div>
+    <div class="check-subheader check-subheader-number">
+      <div class="service-icon pull-left">
+        <i class="icon-webclient-package"></i>
+      </div>
+      <span class="check-subheader_text">
+        Электронный осмотр
+        подъезда
+      </span>
+      <div class="servie-number pull-right">
+        №{{service.number}}
+      </div>
+    </div>
+    <div class="check-subheader">
+      Центр электронных обследований
+      TELEDOM  провел тестирование
+      следующих систем
+    </div>
+    <div class="test-result" ng-repeat="result in results">
+      {{result.name}}
+      <i ng-hide="result.success" class="icon-checkbox test-result_checkbox"></i>
+      <i ng-show="result.success" class="icon-checkbox-checked test-result_checkbox-checked"></i>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer counters-footer">
+    <div class="footer-buttons">
+        <button class="button-circle pull-left" type="button" ng-click="goBack()">
+          <i class="icon-arrow icon-arrow-back"></i>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-vew>

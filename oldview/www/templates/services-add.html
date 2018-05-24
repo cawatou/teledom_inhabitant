@@ -1,0 +1,45 @@
+<ion-view title="Добавить заявку">
+  <ion-content class="has-header has-footer">
+    <div ng-show="service.type">
+      <div class="shadow-container">
+        <div class="service-header">
+          Помогите нам проникнуться
+          Вашей проблемой и подобрать
+          наилучшее решение
+        </div>
+        <div class="article-form_photo article-button-input">
+          <button class="article-button-input_button full-size-white-button" ng-click="addBackground()">
+            <i class="icon-photo full-size-white-button_icon" ></i> Добавить фото
+          </button>
+        </div>
+      </div>
+      <label class="item item-input item-select service-select">
+        <div class="input-label">
+          Выберите тип поломки
+        </div>
+        <select>
+          <option ng-repeat="option in breakOptions">{{option.name}}</option>
+        </select>
+      </label>
+      <label class="item item-input item-select service-select">
+        <div class="input-label">
+          Выберите описание поломки
+        </div>
+        <select>
+          <option ng-repeat="option in descriptionOptions">{{option.name}}</option>
+        </select>
+      </label>
+      <textarea class="service-textatea" placeholder="Введите Ваш комментарий"></textarea>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer counters-footer"  ng-show="service.type">
+    <div class="footer-buttons">
+        <button class="button-bottom" type="button" ng-click="goBack()">
+            <span>Отправить</span>
+        </button>
+        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
+          <i class="icon-td-back"></i>
+        </button>
+    </div>
+  </div>
+</ion-view>

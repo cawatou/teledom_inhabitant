@@ -1,0 +1,101 @@
+<ion-view hide-nav-bar="true" class="bg-photo register-content">
+  <ion-content overflow-scroll="true">
+    <div class="bottom-block-fixer">
+      <div>
+        <form ng-submit="register()" name="registerForm">
+          <div class="row">
+            <div class="col">
+              <div>
+                <button class="add-avatar button-block button" type="button" ng-click="presentActionSheet()">Добавить аватар</button>
+                <button class="add-doc button-block button" type="button" ng-click="presentActionSheet()">Добавить документ<br> на владение квартирой</button>
+              </div>
+              <div class="list form-list">
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="text" placeholder="Логин" name="text" ng-model="registerCredentials.login" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="password" placeholder="Пароль" name="password" ng-model="registerCredentials.password" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="password" placeholder="Подтверждение пароля" name="password" ng-model="registerCredentials.passwordConfirm" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="email" placeholder="Эл. почта" name="email" ng-model="registerCredentials.email" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="tel" placeholder="Телефон" name="phone" ng-model="registerCredentials.phone" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="text" placeholder="Улица" name="address" ng-model="registerCredentials.address" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="text" placeholder="Дом" name="address" ng-model="registerCredentials.address" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="text" placeholder="Литер" name="address" ng-model="registerCredentials.address" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="text" placeholder="Корпус" name="address" ng-model="registerCredentials.address" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="text" placeholder="Номер подъезда" name="address" ng-model="registerCredentials.address" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="text" placeholder="Номер квартиры" name="address" ng-model="registerCredentials.address" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="text" placeholder="Фамилия" name="address" ng-model="registerCredentials.address" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="text" placeholder="Имя" name="address" ng-model="registerCredentials.address" required>
+                  </label>
+                </div>
+                <div>
+                  <label class="item item-input">
+                    <input class="text-input" type="text" placeholder="Отчество" name="address" ng-model="registerCredentials.address" required>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-block">
+            <div class="col back-col">
+              <button class="button-circle" type="button" ng-click="goBack()">
+                <i class="icon-arrow icon-arrow-back"></i>
+              </button>
+            </div>
+            <div class="signup-col">
+              <button class="submit-btn" type="submit" ng-disabled="registerForm.$invalid">Регистрация</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

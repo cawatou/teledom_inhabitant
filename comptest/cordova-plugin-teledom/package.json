@@ -1,0 +1,31 @@
+{
+  "name": "cordova-plugin-teledom",
+  "version": "1.0.0",
+  "description": "Skipo Teledom Client App Service Cordova Plugin",
+  "cordova": {
+    "id": "cordova-plugin-teledom",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Skipo/cordova-plugin-teledom.git"
+  },
+  "keywords": [
+    "skipo",
+    "teledom",
+    "cordova",
+		"plugin",
+		"android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "LeoDiMark",
+  "license": "Apache 2.0",
+  "homepage": "https://skipo.com/"
+}

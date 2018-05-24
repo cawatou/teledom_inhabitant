@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="com.skipo.cordova-plugin-ringtone"
+        version="1.0.0">
+
+    <name>Cordova Plugin Rington</name>
+    <description></description>
+    <license>Apache 2.0</license>
+    <keywords></keywords>
+
+    <js-module src="www/RingtonePlugin.js" name="RingtonePlugin">
+      <clobbers target="window.ringtonePlugin" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="RingtonePlugin">
+          <param name="android-package" value="com.skipo.plugin.RingtonePlugin" />
+        </feature>
+      </config-file>
+
+      <config-file target="AndroidManifest.xml" parent="/*">
+      </config-file>
+
+      <source-file src="src/android/RingtonePlugin.java" target-dir="src/com/skipo/plugin/" />
+    </platform>
+
+</plugin>

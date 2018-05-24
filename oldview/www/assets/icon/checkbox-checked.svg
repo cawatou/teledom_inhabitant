@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="20" viewBox="0 0 22 20">
+  <defs>
+    <rect id="checkbox-checked-a" width="20" height="20" rx="2"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="#FFF" xlink:href="#checkbox-checked-a"/>
+    <rect width="19" height="19" x=".5" y=".5" stroke="#000" rx="2"/>
+    <g fill="#0086E3" transform="translate(3)">
+      <polygon points="6.778 15 .667 8.75 3.111 6.25 6.778 10 16.556 0 19 2.5"/>
+    </g>
+  </g>
+</svg>

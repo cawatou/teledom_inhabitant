@@ -1,0 +1,6 @@
+<div ng-repeat="service in services">
+  <input id="{{service.id}}" class="hidden" type="checkbox" name="{{service.id}}" ng-change="toggleService(service.id)" ng-model="service.active">
+  <label for="{{service.id}}" class="pick-master-lablel">
+    {{service.name}}
+  </label>
+</div>
