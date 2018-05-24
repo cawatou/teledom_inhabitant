@@ -1,29 +1,40 @@
 <ion-view title="Видеонаблюдение">
-  <ion-content class="has-header has-footer video-content" overflow-scroll="true">
-    <div class="video-containter" ng-repeat="video in videos track by $index">
-      <h3 ng-show="!video.playing" class="video-header">{{video.name}}</h3>
-      <div class="video" ng-class="{'playing':video.playing}"  >
-        <video id="video-{{$index}}" preload="auto" webkit-playsinline
-          <source src="assets/videos/video.mp4">>
-        </video>
-      </div>
-      <button ng-click="playVideo($index)" class="video-overflow">
-        <div class="video-button" ng-show="!video.playing">
-          <i class="icon-play" ></i>
-        </div>
-      </button>
-      <button ng-show="video.loading" class="video-button loader button-has-loader_loader">
-      </button>
-    </div>
-  </ion-content>
-  <div class="bar bar-footer counters-footer">
-    <div class="footer-buttons">
-        <button class="button-circle pull-left" type="button" ng-click="goBack()">
-          <i class="icon-arrow icon-arrow-back"></i>
-        </button>
-        <button class="button-circle pull-right" type="button" ui-sref="main.dash">
-          <i class="icon-td-back"></i>
-        </button>
-    </div>
-  </div>
+	<ion-content class="has-header has-footer video-content" overflow-scroll="true">
+		<div class="popup pop-page">
+			<div class="w">
+				<div class="title">
+					<a class="prev" ng-click="goBack()"></a>
+				</div>
+				<!--ng-repeat="video in videos track by $index"-->
+				<div class="video-containter">
+					<div class="title2" ng-show="!video.playing" class="video-header">{{video.name}}</div>
+					<div class="video" ng-class="{'playing':video.playing}">
+						<img style="-webkit-user-select: none;" src="http://192.168.88.252:8081/" width="414" height="310">
+						<!--
+						<video id="video-{{$index}}" preload="auto" webkit-playsinline source src="assets/videos/video.mp4"></video>
+						<div ng-click="playVideo($index)" class="video-overflow">
+							<div class="video-button" ng-show="!video.playing">
+							  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path style="fill:#fff;" d="M388.8,249,201.07,121a8.53,8.53,0,0,0-13.34,7V384a8.53,8.53,0,0,0,13.34,7L388.8,263a8.53,8.53,0,0,0,0-14.1Zm-184,118.89V144.15L368.85,256Z" transform="translate(0 0)"/><path style="fill:#fff;" d="M256,0C114.84,0,0,114.84,0,256S114.84,512,256,512,512,397.16,512,256,397.16,0,256,0Zm0,494.93C124.25,494.93,17.07,387.75,17.07,256S124.25,17.07,256,17.07,494.93,124.25,494.93,256,387.75,494.93,256,494.93Z" transform="translate(0 0)"/></svg>
+							</div>
+						</div>
+						<div ng-show="video.loading" class="video-button loader button-has-loader_loader"></div>
+						-->
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</ion-content>
+	<!--
+<div class="bar bar-footer counters-footer">
+<div class="footer-buttons">
+<button class="button-circle pull-left" type="button" ng-click="goBack()">
+<i class="icon-arrow icon-arrow-back"></i>
+</button>
+<button class="button-circle pull-right" type="button" ui-sref="main.dash">
+<i class="icon-td-back"></i>
+</button>
+</div>
+</div>
+-->
 </ion-view>

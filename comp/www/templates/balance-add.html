@@ -1,5 +1,37 @@
 <ion-view title="Средства оплаты">
   <ion-content>
+	<div class="popup pop-page">
+	<form class="w" novalidate>
+		<div class="title">
+			<a class="prev" ng-click="goBack()"></a>
+			Введите данные карты
+		</div>
+		<div class="t">Номер карты</div>
+		<input ng-model="card.number" cc-format cc-number placeholder="XXXX XXXX XXXX XXXX" ng-required="true"/>
+		<div class="t">Имя владельца</div>
+		<input ng-model="card.name"  placeholder="Имя на карте" ng-required="true"/>
+		<div class="valid">
+			<div class="v1">
+				<div class="t">Действительна до</div>
+				<input type="text" cc-exp-month ng-model="card.month" placeholder="XX"/>
+				<input type="text" cc-exp-year ng-model="card.year" placeholder="XX"/>
+			</div>
+			<div class="v2">
+				<div class="t">CVC</div>
+				<input type="text" ng-model="card.cvv" cc-cvc placeholder="ХХХ">
+			</div>
+		</div>
+		<div class="buttons">
+			<div class="btn no" ng-show="!id" ng-click="goBack()">ОТМЕНА</div>
+			<div class="btn yes" ng-show="!id" ng-click="goBack()">ДОБАВИТЬ</div>
+		</div>
+	</form>
+	</div>
+  </ion-content>
+</ion-view>
+
+<!--
+		
     <div class="subheader">
       <span class="subheader_text" ng-show="id">Внесите изменения<br/>
 в текущую карту</span>
@@ -22,8 +54,7 @@
       </div>
       <input class="card-form_input card-form_input-cvv" ng-model="card.cvv" cc-cvc placeholder="111"/>
     </form>
-  </ion-content>
-  <div class="bar bar-footer counters-footer">
+<div class="bar bar-footer counters-footer">
     <div class="footer-buttons">
         <button class="button-bottom" type="button" ng-click="goBack()">
             <span ng-show="id">Сохранить</span>
@@ -37,4 +68,4 @@
         </button>
     </div>
   </div>
-</ion-view>
+-->

@@ -1015,6 +1015,13 @@ main {
 			visibility: visible;
 			position: relative;
 			height: auto;
+			.img-t{
+				width: 100%;
+				img{
+					width: 100%;
+					margin: 0 0 9px 0;
+				}
+			}
 			.video-containter{
 				display: flex;
 				flex-direction: column;
@@ -2074,7 +2081,7 @@ footer {
 	}
 	main {
 		height: 60%;
-		min-height: inherit;
+		min-height: 60vh;
 		.t2 {
 			text-align: center;
 		}

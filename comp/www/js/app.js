@@ -21,7 +21,7 @@ const CALL_ENABLED = "CALL_ENABLED";
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ngCordova', 'pubnub.angular.service', 'starter.controllers', 'starter.services', 'starter.directives', 'credit-cards'])
+angular.module('starter', ['ionic', 'ngCordova', 'pubnub.angular.service', 'starter.controllers', 'starter.services', 'starter.directives', 'credit-cards', 'ngMask'])
     .constant('AUTH_EVENTS', {
         notAuthenticated: 'auth-not-authenticated',
         notAuthorized: 'auth-not-authorized'

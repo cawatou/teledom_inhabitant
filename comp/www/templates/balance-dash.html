@@ -1,24 +1,66 @@
 <ion-vew title="Средства оплаты">
   <ion-content class="has-header has-footer">
-    <div class="subheader">
-      <span class="subheader_text">Ваши карточки</span>
+    <div class="title">
+    	<a class="prev" type="button" ng-click="goBack()" ui-sref="main.dash"></a> Баланс
     </div>
-    <div class="info-block item info-block-card" ui-sref="main.balance.card({card:card})" ng-repeat="card in cards">
-      <i class="icon-card info-block-card_card-icon"></i>
-      <span class="info-block-card_number">
-        {{card.start}} **** **** {{card.end}}
-      </span>
-      <i class="icon-arrow-right-black info-block-card_open-icon"></i>
-    </div>
-    <div class="info-block item info-block-add-card">
-      <span class="info-block-card_number">
-        Добавить карту
-      </span>
-      <button class="add-user-info" ui-sref="main.balance.add({id:card.id})">
-        <i class="icon-plus-big"></i>
-      </button>
-    </div>
+	<div class="title2">БАЛАНС</div>
+	<div class="text">500 р.</div>
+	<div class="title2">КАРТЫ</div>
+	  
+	<div class="i">
+		<div class="item" ui-sref="main.balance.card({card:card})" ng-repeat="card in cards">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16.8"><path class="a" d="M22.8,0H1.2A1.2,1.2,0,0,0,0,1.2V15.6a1.2,1.2,0,0,0,1.2,1.2H22.8A1.2,1.2,0,0,0,24,15.6V1.2A1.2,1.2,0,0,0,22.8,0Zm.4,15.6a.4.4,0,0,1-.4.4H1.2a.4.4,0,0,1-.4-.4V5.6H23.2Zm0-10.8H.8V3.2H23.2Zm0-2.4H.8V1.2A.4.4,0,0,1,1.2.8H22.8a.4.4,0,0,1,.4.4Z" transform="translate(0 0)"/><path style="fill:#757575;" d="M18.64,14l.16-.16a1.6,1.6,0,1,0,0-2.09A1.6,1.6,0,1,0,18.64,14ZM20,12a.8.8,0,1,1-.8.8A.8.8,0,0,1,20,12Zm-2.4,0a.8.8,0,1,1-.8.8A.8.8,0,0,1,17.6,12Z" transform="translate(0 0)"/><path style="fill:#757575;" d="M3.2,12.4H8a.4.4,0,1,0,0-.8H3.2a.4.4,0,1,0,0,.8Z" transform="translate(0 0)"/><path style="fill:#757575;" d="M3.2,14H8a.4.4,0,1,0,0-.8H3.2a.4.4,0,1,0,0,.8Z" transform="translate(0 0)"/></svg>
+			<div>{{card.start}} **** **** {{card.end}}</div>
+			<div class="popup">
+				<div class="w">
+					<input type="text" value="Квартира 555">
+					<div class="buttons">
+						<div class="btn no">ОТМЕНА</div>
+						<div class="btn yes">СОХРАНИТЬ</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="item add" ui-sref="main.balance.add({id:card.id})">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path style="fill:#3b8dc3;" d="M6,0V6H0V8H6v6H8V8h6V6H8V0Z" transform="translate(0 0)"/></svg>
+			<div>Добавить карту</div>
+		</div>
+		<div class="item add" ui-sref="main.balance.pay">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path style="fill:#3b8dc3;" d="M6,0V6H0V8H6v6H8V8h6V6H8V0Z" transform="translate(0 0)"/></svg>
+			<div>Внести деньги на счет</div>
+		</div>
+	</div>
+	<div class="title2">
+		КВИТАНЦИИ
+	</div>
+	<div class="r">
+		<div class="item">
+			<input type="radio" id="toggle3">
+			<label for="toggle1">Сегодня</label>
+		</div>
+		<div class="item">
+			<input type="radio" id="toggle4">
+			<label for="toggle4">Неделя</label>
+		</div>
+		<div class="item">
+			<div class="calendar"></div>
+		</div>
+	</div>
+	<div class="a">
+		<div class="item">
+			<div class="w">
+				<div class="data">
+					20/03/2018 22:00
+				</div>
+				<div class="status"></div>
+				<div class="more"></div>
+			</div>
+			<div class="t">Вызов электрика</div>
+		</div>
+	</div>
   </ion-content>
+<!--
   <div class="bar bar-footer counters-footer counters-footer-has-message">
     <div class="footer-buttons">
         <button class="button-bottom" type="button" ui-sref="main.balance.pay">
@@ -32,4 +74,5 @@
         </button>
     </div>
   </div>
+-->
 </ion-vew>

@@ -1,22 +1,22 @@
 <ion-view>
-  <ion-content class="has-header has-footer">
-    <div class="popup pop-page">
-      <div class="w">
-        <div class="articel-preview no-margin" ng-click="articleFull = !articleFull" ng-class="{'full-size':articleFull}">
-          <div class="title">
-            <a class="prev" ng-click="goBack()"></a>
-          </div>
-          <div class="title">
-            {{news.header}}
-          </div>
-          <div class="data">
-            <time class="date">{{news.date}}</time>
-          </div>
+	<ion-content class="has-header has-footer">
+		<div class="popup pop-page">
+			<div class="w">
+				<div class="articel-preview no-margin" ng-click="articleFull = !articleFull" ng-class="{'full-size':articleFull}">
+					<div class="title">
+						<a class="prev" ng-click="goBack()"></a>
+					</div>
+					<div class="title">
+						{{news.header}}
+					</div>
+					<div class="data">
+						<time class="date">{{news.date}}</time>
+					</div>
 
-          <div class="t">
-            {{news.message}}
-          </div>
-          <!--
+					<div class="t">
+						{{news.message}}
+					</div>
+					<!--
           <footer class="footer">
               <button ng-hide="articleFull" class="show-all">
                 <i class="icon-arrow-down-white"></i>
@@ -26,8 +26,8 @@
               </button>
           </footer>
           -->
-        </div>
-        <!--<div class="master-header">
+				</div>
+				<!--<div class="master-header">
             <div ng-if="!service.master" class="no-master">
                 Заявка еще не распределена <br/> между мастерами
             </div>
@@ -48,11 +48,11 @@
         <button class="button" type="button" ng-if="service.master" ng-click="goBack()">
             позвонить мастеру
         </button>-->
-      </div>
-    </div>
+			</div>
+		</div>
 
-  </ion-content>
-  <!--
+	</ion-content>
+	<!--
   <div class="bar bar-footer counters-footer">
       <div class="footer-buttons">
           <button class="button-circle pull-left" type="button" ng-click="goBack()">

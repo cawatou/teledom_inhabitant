@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
 
-    <link rel="manifest" href="manifest.json">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<title></title>
 
-    <!-- un-comment this code to enable service worker
+	<link rel="manifest" href="manifest.json">
+
+	<!-- un-comment this code to enable service worker
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js')
@@ -16,36 +17,46 @@
       }
     </script>-->
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <!--
+	<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+	<!--
 		<link href="css/style.css" rel="stylesheet">
 	-->
 	<link href="css/new.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+	<!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
-    <script src="lib/angular-credit-cards/angular-credit-cards.js"></script>
+	<!-- ionic/angularjs js -->
+	<script src="lib/ionic/js/ionic.bundle.js"></script>
+	<script src="lib/ngCordova/dist/ng-cordova.js"></script>
+	<script src="lib/angular-credit-cards/angular-credit-cards.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+	<!-- cordova script (this will be a 404 during development) -->
+	<script src="cordova.js"></script>
 
-    <!-- your app's js -->
+	<!-- your app's js -->
+        <script src='js/ngMask.min.js'></script>
 
-    <script src="js/pubnub.4.15.1.min.js"></script>
-    <script src="js/pubnub-angular-4.0.2.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8rDPGTHq4OCSfd_JN0IRMTmaDKcD3WxU"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/directives.js"></script>
-  </head>
-  <body ng-app="starter" class="platform-android platform-ios main" ng-controller="AppCtrl">
-	  <header>
+	<script src="js/pubnub.4.15.1.min.js"></script>
+	<script src="js/pubnub-angular-4.0.2.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8rDPGTHq4OCSfd_JN0IRMTmaDKcD3WxU"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/services.js"></script>
+	<script src="js/directives.js"></script>
+
+	<script src="js/jquery.js"></script>
+	<script src="https://rawgit.com/angular-ui/ui-mask/master/dist/mask.js"></script>
+
+</head>
+
+<body ng-app="starter" class="platform-android platform-ios main" ng-controller="AppCtrl">
+	<script>
+		var app = angular.module('app', ['ui.mask']);
+                  
+	</script>
+	<header>
 		<ion-nav-bar>
 			<ion-header-bar class="bar bar-header app-header">
 				<div id="hamburger" class="hamburglar is-closed">
@@ -134,13 +145,15 @@
 								</g>
 							</svg>
 
-							<div class="t">Заявки</div>
+							<div class="t">Заявки на ремонт</div>
 							<div>
 								<span class="jingle">1</span>
 							</div>
 						</a>
 					</li>
-					<li>
+
+
+					<!-- li>
 						<a href="#">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.35 88.38">
 								<path class="a" d="M94.51,133.45q-19,0-38,0c-6.25,0-7.15-.94-7.16-7.33,0-13,.07-26-.06-39a8.69,8.69,0,0,1,3.24-7.36C65.19,69,77.7,58,90.3,47.1c3.11-2.69,5.28-2.69,8.38,0,12.72,11,25.37,22.06,38.11,33a7.79,7.79,0,0,1,2.87,6.51c-.1,13.49,0,27-.06,40.47,0,5.19-1.22,6.32-6.63,6.34C120.15,133.48,107.33,133.45,94.51,133.45Zm41.09-4.18v-5c0-11.81-.11-23.63.07-35.44a8.38,8.38,0,0,0-3.27-7.26C124.51,75,116.81,68.13,109,61.38c-4.75-4.11-9.53-8.18-14.13-12.12a5.32,5.32,0,0,0-1.35.47C81,60.61,68.42,71.53,55.81,82.36A6.63,6.63,0,0,0,53.36,88c.09,12.64,0,25.29.06,37.93a26.29,26.29,0,0,0,.44,3.37Z" transform="translate(-49.32 -45.08)"/>
@@ -164,50 +177,23 @@
 							<div class="t">Выйти</div>
 							<div></div>
 						</a>
-					</li>
+					</li -->
 				</ul>
-			
+
 			</ion-header-bar>
 			<ion-nav-title class="title"></ion-nav-title>
 		</ion-nav-bar>
 	</header>
-    <!--
+	<!--
       The views will be rendered in the <ion-nav-view> directive below
       Templates are in the /templates folder (but you could also
       have templates inline in this html file if you'd like).
     -->
 	<main>
-    <ion-nav-view></ion-nav-view>
+		<ion-nav-view></ion-nav-view>
 	</main>
 	<footer class="bar bar-footer main-nav" ng-class="{'main-nav-hidden':newsMode}">
 		<ul id="menu2">
-			<li>
-				<a ui-sref="main.balance.dash">
-					<svg width="20" height="16" viewBox="0 0 20 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-					<g id="Canvas" fill="none">
-					<g id="wallet (1)">
-					<g id="Group">
-					<g id="Group_2">
-					<path id="Vector" d="M 19.6016 6.47142L 19.0421 6.47142L 19.0421 1.47032C 19.0421 0.659572 18.3825 4.76838e-09 17.5719 4.76838e-09L 1.92645 4.76838e-09C 0.864181 4.76838e-09 0 0.864181 0 1.92641C 0 1.93153 0.000351563 1.93649 0.000390626 1.94161C 0.000312501 1.94418 0 1.94668 0 1.94926L 0 12.7824C 0 14.071 1.04836 15.1194 2.33696 15.1194L 18.6437 15.1194C 18.8637 15.1194 19.0421 14.941 19.0421 14.721L 19.0421 11.6129L 19.6016 11.6129C 19.8216 11.6129 20 11.4345 20 11.2145L 20 6.86982C 20 6.64982 19.8216 6.47142 19.6016 6.47142ZM 1.92645 0.796799L 17.5719 0.796799C 17.9432 0.796799 18.2453 1.09895 18.2453 1.47032L 18.2453 3.05614L 1.92645 3.05614C 1.3036 3.05614 0.796798 2.54938 0.796798 1.92645C 0.796798 1.30356 1.3036 0.796799 1.92645 0.796799ZM 18.2453 14.3226L 2.33696 14.3226C 1.4877 14.3226 0.796798 13.6317 0.796798 12.7824L 0.796798 3.48555C 1.11442 3.7163 1.50469 3.85294 1.92645 3.85294L 18.2453 3.85294L 18.2453 6.47142L 15.9811 6.47142C 14.5636 6.47142 13.4104 7.62466 13.4104 9.04213C 13.4104 10.4596 14.5636 11.6128 15.9811 11.6128L 18.2453 11.6128L 18.2453 14.3226ZM 19.2032 10.816L 15.9811 10.816C 15.0029 10.816 14.2072 10.0203 14.2072 9.04213C 14.2072 8.064 15.003 7.26822 15.9811 7.26822L 19.2032 7.26822L 19.2032 10.816Z" fill="#2C2F33"/>
-					</g>
-					</g>
-					<g id="Group_3">
-					<g id="Group_4">
-					<path id="Vector_2" d="M 1.16379 2.28882e-07C 0.522032 2.28882e-07 -8.58308e-08 0.522111 -8.58308e-08 1.16383C -8.58308e-08 1.80555 0.522071 2.32766 1.16379 2.32766C 1.80551 2.32766 2.32762 1.80559 2.32762 1.16383C 2.32758 0.522072 1.80551 2.28882e-07 1.16379 2.28882e-07ZM 1.16379 1.53086C 0.961447 1.53086 0.796799 1.36621 0.796799 1.16383C 0.796799 0.961448 0.961408 0.796798 1.16379 0.796798C 1.36614 0.796798 1.53082 0.961448 1.53082 1.16383C 1.53082 1.36621 1.36614 1.53086 1.16379 1.53086Z" transform="translate(14.917 7.87891)" fill="#2C2F33"/>
-					</g>
-					</g>
-					</g>
-					</g>
-					</svg>
-					<div>Баланс</div>
-				</a>
-			</li>
-			<li>
-				<a ng-disabled="checkPrivelege('air-key',main.airkey)" ng-click="openDoor()">
-					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26"><defs><style>.bb{mask:url(#aa);}</style><mask id="aa" x="0" y="0" width="26" height="26" maskUnits="userSpaceOnUse"><g transform="translate(1 1)"><path style="fill:#fff;" d="M13.2.33,23.55,9.84a1.28,1.28,0,0,1,.45,1V22.7A1.31,1.31,0,0,1,22.67,24H15.11V17a2,2,0,0,0-2-2h-4v9H1.33A1.31,1.31,0,0,1,0,22.7V10.8a1.28,1.28,0,0,1,.45-1l11-9.51A1.36,1.36,0,0,1,13.2.33Z"/></g></mask></defs><g class="bb"><path style="fill:#757575;" d="M23.55,9.84l-.68.74h0ZM13.2.33l.68-.74h0Zm-1.77,0,.65.76h0ZM.45,9.84l.65.76h0ZM9.07,24v1h1V24Zm0-9V14h-1v1Zm6,9h-1v1h1ZM24.23,9.1,13.88-.41,12.52,1.06l10.35,9.51ZM13.85-.43a2.36,2.36,0,0,0-3.08,0l1.31,1.51a.36.36,0,0,1,.46,0Zm-3.08,0-11,9.51L1.1,10.59l11-9.51Zm-11,9.51A2.28,2.28,0,0,0-1,10.8H1a.28.28,0,0,1,.1-.21ZM-1,10.8V22.7H1V10.8Zm0,11.9A2.31,2.31,0,0,0,1.33,25V23A.32.32,0,0,1,1,22.7ZM22.67,25A2.31,2.31,0,0,0,25,22.7H23a.32.32,0,0,1-.33.3ZM25,22.7V10.8H23V22.7Zm0-11.9a2.28,2.28,0,0,0-.79-1.72L22.9,10.59a.28.28,0,0,1,.1.21ZM1.33,25H9.07V23H1.33Zm8.73-1V15h-2v9Zm-1-8h4V14h-4Zm6,9h7.56V23H15.11Zm-1-8v7h2V17Zm-1-1a1,1,0,0,1,1,1h2a3,3,0,0,0-3-3Z" transform="translate(1 1)"/></g></svg>
-					<div>Ключ</div>
-				</a>
-			</li>
 			<li>
 				<a ng-disabled="checkPrivelege('video',main.video)" ui-sref="main.video">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23"><path style="fill:none;stroke:#757575;" d="M23,3V21a2,2,0,0,1-2,2H3a2,2,0,0,1-2-2V3A2,2,0,0,1,3,1H21A2,2,0,0,1,23,3Z" transform="translate(-0.5 -0.5)"/><circle style="fill:none;stroke:#757575;" cx="11.5" cy="11.5" r="6.5"/></svg>
@@ -215,9 +201,24 @@
 				</a>
 			</li>
 			<li>
-				<a ui-sref="main.services.dash">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 19.95"><path style="fill:#757575;" d="M30.52,16.09H29.24V4.91a.48.48,0,1,0-1,0V16.58a.49.49,0,0,0,.49.49H30v.67A1.25,1.25,0,0,1,28.79,19H9.21A1.25,1.25,0,0,1,8,17.73v-.67H9.24a.48.48,0,0,0,.48-.49V4.91a.48.48,0,1,0-1,0V16.09H7.48a.48.48,0,0,0-.48.49v1.15a2.22,2.22,0,0,0,2.21,2.22H28.79A2.22,2.22,0,0,0,31,17.73V16.58A.48.48,0,0,0,30.52,16.09Z" transform="translate(-7 0)"/><path style="fill:#757575;" d="M25,0H13a1.78,1.78,0,0,0-1.78,1.78V8.86A1.78,1.78,0,0,0,13,10.64h.5v2.13a.72.72,0,0,0,.72.72.7.7,0,0,0,.54-.25L17,10.64h8a1.78,1.78,0,0,0,1.78-1.78V1.78A1.78,1.78,0,0,0,25,0Zm.81,8.86a.81.81,0,0,1-.81.81H16.8a.48.48,0,0,0-.37.17l-1.94,2.25V10.16A.48.48,0,0,0,14,9.67H13a.81.81,0,0,1-.81-.81V1.78A.81.81,0,0,1,13,1H25a.81.81,0,0,1,.81.81V8.86Z" transform="translate(-7 0)"/><path style="fill:#757575;" d="M12.5,16h13a.5.5,0,0,1,.5.5h0a.5.5,0,0,1-.5.5h-13a.5.5,0,0,1-.5-.5h0A.5.5,0,0,1,12.5,16Z" transform="translate(-7 0)"/></svg>
-					<div>Заявки</div>
+				<a class="key" ng-class="{'ac': click}" ng-click="click = !click">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.49 22.34"><circle style="fill:none;stroke:#757575;" cx="18.63" cy="14.63" r="4" transform="translate(-4.26 6.05) rotate(-17.66)"/><path style="fill:none;stroke:#757575;" d="M24.25,12.52v0l.09.26a6,6,0,0,1,.27,1.39h0a3.87,3.87,0,0,1-.7,3.26l0,0,0,0a6,6,0,0,1-7.8,2.48l0,0h0a3.87,3.87,0,0,1-2.46-2.26h0a6,6,0,0,1-.58-1.29l-.08-.27v0l-.15-.46A17,17,0,0,1,12,7.6c.45-2.35,1.52-3.94,3-4.4s3.23.22,5,1.87a17,17,0,0,1,4.16,7Z" transform="translate(-0.7 -0.29)"/><path style="fill:#757575;" d="M6.66,9.92l-.27.53L1.78,19.37l.64,2,1.45-.46-.34-1.06-.3-1,1-.3,1.06-.34L4.9,17.2l-.3-1,1-.3,1.62-.51L9,11.82l.28-.55h.62a5.84,5.84,0,0,0,1.17-.1q.05.49.14,1a6.92,6.92,0,0,1-1.32.11l-2.06,4L6.8,16.6l-1,.3.3,1,0,.11.3,1-1,.3-.11,0-1,.3.3,1,0,.11.3,1-1,.3-1.45.46-1,.3-.3-1L.7,19.28,5.5,10a7.38,7.38,0,0,1-1-1.91,6,6,0,0,1,9.75-6.22,3.66,3.66,0,0,0-.9.54A5,5,0,0,0,5.47,7.79a6.39,6.39,0,0,0,.85,1.64Z" transform="translate(-0.7 -0.29)"/></svg>
+					<div>Дверь</div>
+					<div class="popup">
+						<div class="opendoor" ng-disabled="checkPrivelege('air-key',main.airkey)" ng-click="openDoor()">
+							<div>
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26"><defs><style>.bb{mask:url(#aa);}</style><mask id="aa" x="0" y="0" width="26" height="26" maskUnits="userSpaceOnUse"><g transform="translate(1 1)"><path style="fill:#fff;" d="M13.2.33,23.55,9.84a1.28,1.28,0,0,1,.45,1V22.7A1.31,1.31,0,0,1,22.67,24H15.11V17a2,2,0,0,0-2-2h-4v9H1.33A1.31,1.31,0,0,1,0,22.7V10.8a1.28,1.28,0,0,1,.45-1l11-9.51A1.36,1.36,0,0,1,13.2.33Z"/></g></mask></defs><g class="bb"><path style="fill:#ffffff;" d="M23.55,9.84l-.68.74h0ZM13.2.33l.68-.74h0Zm-1.77,0,.65.76h0ZM.45,9.84l.65.76h0ZM9.07,24v1h1V24Zm0-9V14h-1v1Zm6,9h-1v1h1ZM24.23,9.1,13.88-.41,12.52,1.06l10.35,9.51ZM13.85-.43a2.36,2.36,0,0,0-3.08,0l1.31,1.51a.36.36,0,0,1,.46,0Zm-3.08,0-11,9.51L1.1,10.59l11-9.51Zm-11,9.51A2.28,2.28,0,0,0-1,10.8H1a.28.28,0,0,1,.1-.21ZM-1,10.8V22.7H1V10.8Zm0,11.9A2.31,2.31,0,0,0,1.33,25V23A.32.32,0,0,1,1,22.7ZM22.67,25A2.31,2.31,0,0,0,25,22.7H23a.32.32,0,0,1-.33.3ZM25,22.7V10.8H23V22.7Zm0-11.9a2.28,2.28,0,0,0-.79-1.72L22.9,10.59a.28.28,0,0,1,.1.21ZM1.33,25H9.07V23H1.33Zm8.73-1V15h-2v9Zm-1-8h4V14h-4Zm6,9h7.56V23H15.11Zm-1-8v7h2V17Zm-1-1a1,1,0,0,1,1,1h2a3,3,0,0,0-3-3Z" transform="translate(1 1)"/></g></svg>
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26"><defs><style>.bbb{mask:url(#aaa);}</style><mask id="aaa" x="0" y="0" width="26" height="26" maskUnits="userSpaceOnUse"><g transform="translate(1 1)"><path style="fill:#fff;" d="M13.2.33,23.55,9.84a1.28,1.28,0,0,1,.45,1V22.7A1.31,1.31,0,0,1,22.67,24H15.11V17a2,2,0,0,0-2-2h-4v9H1.33A1.31,1.31,0,0,1,0,22.7V10.8a1.28,1.28,0,0,1,.45-1l11-9.51A1.36,1.36,0,0,1,13.2.33Z"/></g></mask></defs><g class="bbb"><path style="fill:#757575;" d="M23.55,9.84l-.68.74h0ZM13.2.33l.68-.74h0Zm-1.77,0,.65.76h0ZM.45,9.84l.65.76h0ZM9.07,24v1h1V24Zm0-9V14h-1v1Zm6,9h-1v1h1ZM24.23,9.1,13.88-.41,12.52,1.06l10.35,9.51ZM13.85-.43a2.36,2.36,0,0,0-3.08,0l1.31,1.51a.36.36,0,0,1,.46,0Zm-3.08,0-11,9.51L1.1,10.59l11-9.51Zm-11,9.51A2.28,2.28,0,0,0-1,10.8H1a.28.28,0,0,1,.1-.21ZM-1,10.8V22.7H1V10.8Zm0,11.9A2.31,2.31,0,0,0,1.33,25V23A.32.32,0,0,1,1,22.7ZM22.67,25A2.31,2.31,0,0,0,25,22.7H23a.32.32,0,0,1-.33.3ZM25,22.7V10.8H23V22.7Zm0-11.9a2.28,2.28,0,0,0-.79-1.72L22.9,10.59a.28.28,0,0,1,.1.21ZM1.33,25H9.07V23H1.33Zm8.73-1V15h-2v9Zm-1-8h4V14h-4Zm6,9h7.56V23H15.11Zm-1-8v7h2V17Zm-1-1a1,1,0,0,1,1,1h2a3,3,0,0,0-3-3Z" transform="translate(1 1)"/></g></svg>
+					<div>История</div>
 				</a>
 			</li>
 		</ul>
@@ -249,8 +250,13 @@
       </div>
     </div>
 -->
-	<script src="js/jquery.js"></script>
-	<script src="js/main.js"></script>
 
-  </body>
+	<script src="js/main.js"></script>
+	<script src="js/maskedinput.js"></script>
+	<script>
+
+
+	</script>
+</body>
+
 </html>

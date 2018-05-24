@@ -17,13 +17,13 @@
                 <div>
                   <label class="item item-input">
                     <i class="icon-profile item-input_icon"></i>
-                    <input class="text-input" type="text" placeholder="Введите логин" name="email" ng-model="data.username" required></input>
+                    <input class="text-input" type="text" placeholder="Введите логин" name="email" ng-model="data.username" required>
                   </label>
                 </div>
                 <div>
                   <label class="item item-input">
                     <i class="icon-lock-closed item-input_icon"></i>
-                    <input class="text-input" type="password" placeholder="Введите пароль" name="password" ng-model="data.password" required></input>
+                    <input class="text-input" type="password" placeholder="Введите пароль" name="password" ng-model="data.password" required>
                   </label>
                 </div>
               </div>
@@ -47,7 +47,7 @@
           </div>
 
           <div class="bottom-block">
-            <div class="signup-col">
+            <ion-col class="signup-col">
               <button class="submit-btn button button-has-loader" full type="submit" ng-disabled="loginForm.$invalid" >Войти
                 <div ng-show="loading" class="loader button-has-loader_loader"></div>
               </button>
